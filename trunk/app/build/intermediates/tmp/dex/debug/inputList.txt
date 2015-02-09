@@ -1,0 +1,5 @@
+C:\Users\Maxim\AndroidStudioProjects\UniKsApp\app\build\intermediates\classes\debug
+C:\Users\Maxim\AndroidStudioProjects\UniKsApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-db19532f238905c56c7730af0f6ce17605107761.jar
+C:\Users\Maxim\AndroidStudioProjects\UniKsApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-5504d9fca05caf07f359553846dcd5f8d1dda9fa.jar
+C:\Users\Maxim\AndroidStudioProjects\UniKsApp\app\build\intermediates\pre-dexed\debug\classes-fae2435e09c8d283927793f8e1c75727b2ed7028.jar
+C:\Users\Maxim\AndroidStudioProjects\UniKsApp\app\build\intermediates\pre-dexed\debug\classes-f61fb26650cd6fb6940d1a1b2356e6c6b99bc977.jar
