@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">cc-uniapp-2015</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">test</string>
     <string name="action_settings">Settings</string>
 
 </resources>
