@@ -3,9 +3,9 @@ package com.uni.cc_uniapp_2015;
 public class Meal {
 	String name;
 	String description;
-	int priceStud;
-	int priceEmpl;
-	int priceOther;
+	String priceStud;
+	String priceEmpl;
+	String priceOther;
 	
 	
 	public String getName() {
@@ -14,22 +14,22 @@ public class Meal {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPriceStud() {
+	public String getPriceStud() {
 		return priceStud;
 	}
-	public void setPriceStud(int priceStud) {
+	public void setPriceStud(String priceStud) {
 		this.priceStud = priceStud;
 	}
-	public int getPriceEmpl() {
+	public String getPriceEmpl() {
 		return priceEmpl;
 	}
-	public void setPriceEmpl(int priceEmpl) {
+	public void setPriceEmpl(String priceEmpl) {
 		this.priceEmpl = priceEmpl;
 	}
-	public int getPriceOther() {
+	public String getPriceOther() {
 		return priceOther;
 	}
-	public void setPriceOther(int priceOther) {
+	public void setPriceOther(String priceOther) {
 		this.priceOther = priceOther;
 	}
 	public String getDescription() {

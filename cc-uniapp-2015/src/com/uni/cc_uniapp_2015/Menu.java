@@ -26,5 +26,14 @@ public class Menu {
 		this.listOfDays = listOfDays;
 	}
 	
+	public void initDays() {
+		listOfDays.add(new Day("Montag"));
+		listOfDays.add(new Day("Dienstag"));
+		listOfDays.add(new Day("Mittwoch"));
+		listOfDays.add(new Day("Donnerstag"));
+		listOfDays.add(new Day("Freitag"));
+
+	}
+	
 
 }

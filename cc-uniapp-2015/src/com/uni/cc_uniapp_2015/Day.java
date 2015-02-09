@@ -7,7 +7,9 @@ public class Day {
 	String day;
 	List<Meal> listOfMeals = new ArrayList<Meal>();
 	
-	
+	public Day(String day){
+		this.day = day;
+	}
 	public String getDay() {
 		return day;
 	}
@@ -16,6 +18,9 @@ public class Day {
 	}
 	public List<Meal> getListOfMeals() {
 		return listOfMeals;
+	}
+	public void addMeal(Meal meal){
+		listOfMeals.add(meal);
 	}
 	public void setListOfMeals(List<Meal> listOfMeals) {
 		this.listOfMeals = listOfMeals;

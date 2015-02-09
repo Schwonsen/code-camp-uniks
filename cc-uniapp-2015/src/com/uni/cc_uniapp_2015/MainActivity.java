@@ -1,20 +1,31 @@
 package com.uni.cc_uniapp_2015;
 
+
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
+import android.view.View.OnClickListener;
+
 import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
+	
+	final static String ZENTRAL_MENZA_URL = "http://www.studentenwerk-kassel.de/188.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +33,19 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         
         Button parseBtn = (Button) findViewById(R.id.button1);
+        parseBtn.setOnClickListener(new OnClickListener() {
+            
+			@Override
+			public void onClick(View v) {
+			
+				
+				URLParser parserTask =  new URLParser();
+				
+				parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/188.html"});
+				
+				
+			}
+          });
     }
 
 
@@ -42,22 +66,5 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    
-    public void onButtonClick(View view){
-    	try {
-			
-    		
-    		Document doc = Jsoup.connect("http://google.com").get();
-			
-    		String title = doc.title();
-			System.out.println("TITEL:  "+title);
-			Log.e("HIER", title);
-		
-    	
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     }
 }
