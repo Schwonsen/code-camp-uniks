@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Day {
-	String day;
+	String name;
 	List<Meal> listOfMeals = new ArrayList<Meal>();
 	
-	public Day(String day){
-		this.day = day;
+	public Day(String name){
+		this.name = name;
 	}
-	public String getDay() {
-		return day;
+	public String getName() {
+		return name;
 	}
-	public void setDay(String day) {
-		this.day = day;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public List<Meal> getListOfMeals() {
 		return listOfMeals;

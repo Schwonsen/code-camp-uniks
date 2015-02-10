@@ -1,32 +1,18 @@
 package com.uni.cc_uniapp_2015;
 
-
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.view.View;
 import android.view.View.OnClickListener;
-
 import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
 	
-	final static String ZENTRAL_MENZA_URL = "http://www.studentenwerk-kassel.de/188.html";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +23,23 @@ public class MainActivity extends ActionBarActivity {
             
 			@Override
 			public void onClick(View v) {
-			
-				
-				URLParser parserTask =  new URLParser();
-				
-			//	parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/188.html"});
-				parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/144.html"});
 
+				CanteenMenuParserTask parserTask =  new CanteenMenuParserTask();
 				
-				
+			 	try {
+					String test = parserTask.execute(new String[]{Canteen.K10_URL}).get();
+					Log.d("TEST", test.length() + "");
+	
+					Log.d("TEST", test.substring(0, 2501));
+					Log.d("TEST", test.substring(2500, test.length()));
+	
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
           });
     }

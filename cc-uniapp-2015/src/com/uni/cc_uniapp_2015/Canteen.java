@@ -12,6 +12,7 @@ public class Canteen {
 	final static String MENSA_H_P_S_URL = "http://www.studentenwerk-kassel.de/187.html";
 	final static String MENSA_WITZENHAUSEN = "http://www.studentenwerk-kassel.de/415.html";
 	
+	
 	String name;
 	
 	List<Day> listOfDays = new ArrayList<Day>();

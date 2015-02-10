@@ -4,5 +4,11 @@
     <string name="app_name">cc-uniapp-2015</string>
     <string name="hello_world">test</string>
     <string name="action_settings">Settings</string>
-
+    
+    <string name="zentralmensa">Zentralmensa</string>
+    <string name="k10">K10</string>
+    <string name="mensa_71_wa">Mensa 71, Wilhelmshöher Allee</string>
+    <string name="mensa_h_p_s">Mensa Heinr.-Plett-Straße</string>
+    <string name="steinstrasse">Steinstraße</string>
+    <string name="menzelstrasse">Menzelstraße</string>
 </resources>
