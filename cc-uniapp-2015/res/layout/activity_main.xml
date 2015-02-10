@@ -8,35 +8,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.uni.cc_uniapp_2015.MainActivity" >
 
-    <Button
-        android:id="@+id/button1"
+    <TextView
+        android:id="@+id/txt_standort_WilliAllee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/AdressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_toIngSchool"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="50dp"
+        android:onClick="onButtonClick"
+        android:text="@string/btn_ToAdressesTEMP" />
+
+    <Button
+        android:id="@+id/btn_toIngSchool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_standort_WilliAllee"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
         android:onClick="onButtonClick"
         android:text="Button" />
 
-    <ScrollView
-        android:id="@+id/eventScrollView"
+    <Button
+        android:id="@+id/btn_toNVVPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/eventText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test" />
-            
-        </LinearLayout>
-    </ScrollView>
+        android:layout_below="@+id/AdressButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:onClick="onButtonClick"
+        android:text="@string/btn_ToNVVPlan" />
 
 </RelativeLayout>

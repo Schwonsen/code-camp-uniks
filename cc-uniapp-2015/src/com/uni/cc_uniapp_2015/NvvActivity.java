@@ -1,15 +1,15 @@
-package com.uni.cc_uniapp_2015.activitys;
+package com.uni.cc_uniapp_2015;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.uni.cc_uniapp_2015.MainActivity;
 import com.uni.cc_uniapp_2015.R;
 import com.uni.cc_uniapp_2015.crawler.CrawlValue;
 import com.uni.cc_uniapp_2015.crawler.Crawler;
 import com.uni.cc_uniapp_2015.crawler.Crawls;
 import com.uni.cc_uniapp_2015.crawler.NvvCrawler;
 import com.uni.cc_uniapp_2015.root.Root;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
