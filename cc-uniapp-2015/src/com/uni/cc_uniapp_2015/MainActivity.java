@@ -41,7 +41,9 @@ public class MainActivity extends ActionBarActivity {
 				
 				URLParser parserTask =  new URLParser();
 				
-				parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/188.html"});
+			//	parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/188.html"});
+				parserTask.execute(new String[]{"http://www.studentenwerk-kassel.de/144.html"});
+
 				
 				
 			}
