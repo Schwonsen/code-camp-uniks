@@ -15,12 +15,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listViewNvv"
             android:layout_width="match_parent"
-            android:layout_height="400dp" >
+            android:layout_height="300dp" >
         </ListView>
     </LinearLayout>
 
@@ -38,13 +38,42 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true" />
 
+        <RadioGroup
+            android:id="@+id/radioNvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="21dp" >
+
+            <RadioButton
+                android:id="@+id/radioWilli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Willi" />
+
+            <RadioButton
+                android:id="@+id/radioHopla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HoPla" />
+            
+            <RadioButton
+                android:id="@+id/radioKorba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Korba" />
+        </RadioGroup>
+
         <Button
             android:id="@+id/buttonSearchTram"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:text="Suche" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -19,11 +19,16 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class NvvActivity extends ActionBarActivity implements Crawls
 {
+	public static boolean williCheck;
+	public static boolean hoplaCheck;
+	public static boolean korbaCheck;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +39,7 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 		Calendar c = Calendar.getInstance();
 		int hours = c.get(Calendar.HOUR_OF_DAY);
 		int minutes = c.get(Calendar.MINUTE);
-		
+
 		String time = "";
 		time = setTimer(hours, minutes, time);
 
@@ -97,8 +102,8 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 
 		for (String input : crawVal.getKeys())
 		{
-			String tramInfos = crawVal.getValue(input).get(0) + " "
-					+ " " + crawVal.getValue(input).get(1) + " "
+			String tramInfos = crawVal.getValue(input).get(0) + " " + " "
+					+ crawVal.getValue(input).get(1) + " "
 					+ crawVal.getValue(input).get(2);
 
 			if (listItems.size() == 0)
@@ -164,7 +169,49 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 				TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
 				int hours = picker.getCurrentHour();
 				int minutes = picker.getCurrentMinute();
+
+				String time = "";
+				time = setTimer(hours, minutes, time);
+
+				Object[] parameters = { time };
+
+				nvvCrawl.fetch(parameters);
+			}
+		});
+
+		RadioGroup nvvGroup = (RadioGroup) findViewById(R.id.radioNvv);
+		nvvGroup.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId)
+			{
+				if (checkedId == R.id.radioWilli)
+				{
+					williCheck = true;
+					korbaCheck = false;
+					hoplaCheck = false;
+				}
+				else if (checkedId == R.id.radioHopla)
+				{
+					williCheck = false;
+					hoplaCheck = true;
+					korbaCheck = false;
+				}
+				else if(checkedId == R.id.radioKorba)
+				{
+					williCheck = false;
+					hoplaCheck = false;
+					korbaCheck = true;
+				}
 				
+				ListView listView = (ListView) findViewById(R.id.listViewNvv);
+				listView.setAdapter(null);
+
+				NvvCrawler nvvCrawl = new NvvCrawler(nvvAvtivity);
+				TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
+				int hours = picker.getCurrentHour();
+				int minutes = picker.getCurrentMinute();
+
 				String time = "";
 				time = setTimer(hours, minutes, time);
 

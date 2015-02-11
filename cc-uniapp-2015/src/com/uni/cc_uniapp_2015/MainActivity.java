@@ -27,7 +27,7 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
 
-	public static boolean online =false;
+	public static boolean online;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
