@@ -9,6 +9,7 @@
     <string name="txt_Adress_AVZ">Standort AVZ, Heinrich-Plett-Straße 40, 34132 Kassel</string>
     <string name="btn_ToAdressesTEMP">Uni Adressen</string>
     <string name="btn_ToNVVPlan">Straßenbahn-Pläne</string>
+    <string name="btn_share">Sharen</string>
 
 
 </resources>

@@ -98,6 +98,15 @@ public class MainActivity extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this,NvvActivity.class));
 		}
+		
+		else if(view.getId() == R.id.btn_share){
+			Intent intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("text/plain");
+			
+			intent.putExtra(android.content.Intent.EXTRA_TEXT, "Ich nutze die cc-uniapp-2015!");
+			startActivity(intent);
+		}
+		
 	}
 	public boolean isOnline()
 	{
