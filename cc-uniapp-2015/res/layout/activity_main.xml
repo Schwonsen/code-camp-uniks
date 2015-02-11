@@ -8,60 +8,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.uni.cc_uniapp_2015.MainActivity" >
 
-    <TextView
-        android:id="@+id/txt_standort_WilliAllee"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/vw_uniLogo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/uni_logo" />
 
-    <Button
-        android:id="@+id/AdressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_toIngSchool"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:onClick="onButtonClick"
-        android:text="@string/btn_ToAdressesTEMP" />
-
-    <Button
-        android:id="@+id/btn_toNVVPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/AdressButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:onClick="onButtonClick"
-        android:text="@string/btn_ToNVVPlan" />
-
-    <Button
+    <ImageButton
         android:id="@+id/btn_share"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_toNVVPlan"
+       
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginBottom="65dp"
         android:onClick="onButtonClick"
-        android:text="@string/btn_share" />
+        android:src="@drawable/share" />
 
-    <Button
-        android:id="@+id/btn_toIngSchool"
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/btn_navigate"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_share"
-        android:layout_below="@+id/txt_standort_WilliAllee"
-        android:layout_marginTop="54dp"
-        android:onClick="onButtonClick"
-        android:text="Button" />
-    
-    <Button
-        android:id="@+id/btn_toLibrary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_toNVVPlan"
+        android:layout_above="@+id/btn_share"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="28dp"
         android:onClick="onButtonClick"
-        android:text="@string/btn_Library" />
+        android:src="@drawable/navigation" />
+
+    <ImageButton
+        android:id="@+id/btn_toNVVPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="onButtonClick"
+        android:src="@drawable/pikto_haltestelle" />
+
+    <ImageButton
+        android:id="@+id/btn_toLibrary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_toNVVPlan"
+        android:layout_alignLeft="@+id/btn_toNVVPlan"
+        android:layout_marginBottom="20dp"
+        android:onClick="onButtonClick"
+        android:src="@drawable/pikto_buch" />
 
 </RelativeLayout>

@@ -13,6 +13,14 @@ public class GPSFinder extends Service implements LocationListener {
 
 	private final Context mContext;
 
+	//Prüfung auf "Vorhandensein" der Module
+	boolean isGPSEnabled = false;
+	boolean isNetworkEnabled = false;
+
+	//Prüfung auf Verfügbarkeit
+	boolean gpsIsOn = false;
+	boolean networkIsOn = false;
+
 	Location location; 
 	double latitude; 
 	double longitude; 
@@ -22,7 +30,7 @@ public class GPSFinder extends Service implements LocationListener {
 
 	//Updatezeit der Position = 1 sek
 	private static final long MIN_TIME_BW_UPDATES = 100000;
-	//1000 * 60 * 1; 
+
 
 	//Definition eines Location Managers
 	protected LocationManager locationManager;
@@ -33,38 +41,68 @@ public class GPSFinder extends Service implements LocationListener {
 	}
 
 	public Location getLocation() {
+		networkIsOn = false;
+		gpsIsOn = false;
 		try {
-			locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
+			locationManager = (LocationManager) mContext
+					.getSystemService(LOCATION_SERVICE);
 
-			//Initialisiere Locationmanager
-			locationManager.requestLocationUpdates(
-					LocationManager.NETWORK_PROVIDER,
-					MIN_TIME_BW_UPDATES,
-					MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+			//Prüfe ob GPS vorhanden
+			isGPSEnabled = locationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-			//Beziehe Informationen von GPS
-			if (locationManager != null) {
-				location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+			//Prüfe ob Netwerk-Modul vorhanden
+			isNetworkEnabled = locationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-				if (location != null) {
-					latitude = location.getLatitude();
-					longitude = location.getLongitude();
+			if (!isGPSEnabled && !isNetworkEnabled) {
+				//NICHTS VERFÜGBAR!!!
+			} 
+
+			//Wenn ein Service erreichbar -> Ermittle Position
+			else {
+
+				//Versuche zunächst Netwerk-Koordinaten
+				if (isNetworkEnabled) {
+					locationManager.requestLocationUpdates(
+							LocationManager.NETWORK_PROVIDER,
+							MIN_TIME_BW_UPDATES,
+							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+
+					if (locationManager != null) {
+						location = locationManager
+								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+						if (location != null) {
+							latitude = location.getLatitude();
+							longitude = location.getLongitude();
+							networkIsOn = true;
+
+						}
+					}
 				}
-			}
 
-			if (location == null) {
-				locationManager.requestLocationUpdates(
-						LocationManager.GPS_PROVIDER,
-						MIN_TIME_BW_UPDATES,
-						MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 
-				//Beziehe Informationen von Mobilen Daten
-				if (locationManager != null) {
-					location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				//Wenn GPS vorhanden, nutze diese Koordinaten (Latitude und Longlatitude)
+				if (isGPSEnabled) {
+					if (location == null) {
+						locationManager.requestLocationUpdates(
+								LocationManager.GPS_PROVIDER,
+								MIN_TIME_BW_UPDATES,
+								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 
-					if (location != null) {
-						latitude = location.getLatitude();
-						longitude = location.getLongitude();
+
+						if (locationManager != null) {
+							location = locationManager
+									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+							if (location != null) {
+								latitude = location.getLatitude();
+								longitude = location.getLongitude();
+								gpsIsOn = true;
+
+							}
+						}
 					}
 				}
 			}
@@ -80,7 +118,6 @@ public class GPSFinder extends Service implements LocationListener {
 		if(location != null){
 			latitude = location.getLatitude();
 		}
-
 
 		return latitude;
 	}
@@ -114,6 +151,14 @@ public class GPSFinder extends Service implements LocationListener {
 	@Override
 	public IBinder onBind(Intent arg0) {
 		return null;
+	}
+
+	public boolean getGpsIsOn() {
+		return gpsIsOn;
+	}
+
+	public boolean getNetworkIsOn() {
+		return networkIsOn;
 	}
 
 }

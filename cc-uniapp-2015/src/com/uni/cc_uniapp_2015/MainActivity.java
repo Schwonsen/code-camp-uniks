@@ -33,33 +33,7 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Button parseBtn = (Button) findViewById(R.id.btn_toIngSchool);
 		 online = isOnline();
-
-	 
-	        parseBtn.setOnClickListener(new OnClickListener() {
-	            
-				@Override
-				public void onClick(View v) {
-
-					CanteenMenuParser parserTask =  new CanteenMenuParser();
-					
-				 	try {
-						String test = parserTask.execute(new String[]{Canteen.K10_URL}).get();
-						Log.d("TEST", test.length() + "");
-		
-						Log.d("TEST", test.substring(0, 2501));
-						Log.d("TEST", test.substring(2500, test.length()));
-		
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (ExecutionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-	          });
 	        
 	        //Intent intent = new Intent(this, NvvActivity.class);
 			//startActivity(intent);
@@ -90,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void onButtonClick(View view){
-		if(view.getId() == R.id.AdressButton){
+		if(view.getId() == R.id.btn_navigate){
 			//Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this, UniAdresses.class));
 		}
