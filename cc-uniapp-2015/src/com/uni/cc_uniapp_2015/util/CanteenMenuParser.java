@@ -104,9 +104,8 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 	            	for(Meal meal : day.getListOfMeals()) {
 	            		
 	            		JSONObject mealObject = new JSONObject();
-	            		mealObject.put("nameOfMeal", meal.getName());
-	            		mealObject.put("descriptionOfMeal", meal.getDescription());
-	            		
+	            		mealObject.put("nameOfMeal", meal.getName().length() > 0 ? meal.getName() : "");
+	            		mealObject.put("descriptionOfMeal", meal.getDescription().length() > 0 ? meal.getDescription() : "");
 	            		JSONArray prices = new JSONArray();
 	            		
 	            		JSONObject priceStudent = new JSONObject();
@@ -114,13 +113,13 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 	            		JSONObject pricEmployee = new JSONObject();
 	            		
 	            		priceStudent.put("type", "student");
-	            		priceStudent.put("price", meal.getPriceStud());
+	            		priceStudent.put("price",  meal.getPriceStud().length() > 0 ?  meal.getPriceStud() : "");
 	            		
 	            		pricEmployee.put("type", "employee");
-	            		pricEmployee.put("price", meal.getPriceEmpl());
+	            		pricEmployee.put("price", meal.getPriceEmpl().length() > 0 ?  meal.getPriceEmpl() : "");
 	            		
 	            		priceOther.put("type", "other");
-	            		priceOther.put("price", meal.getPriceOther());
+	            		priceOther.put("price", meal.getPriceOther().length() > 0 ?  meal.getPriceOther() : "" );
 	            		
 	            		prices.put(priceStudent);
 	            		prices.put(pricEmployee);
