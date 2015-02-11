@@ -1,30 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.uni.cc_uniapp_2015.MainActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_above="@+id/vw_uniLogo"
+    android:layout_centerHorizontal="true"
+    android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/vw_uniLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/uni_logo" />
 
     <ImageButton
-        android:id="@+id/btn_share"
+        android:id="@+id/btn_toLibrary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp"
+        android:layout_marginTop = "50dp"
+        android:layout_above="@+id/btn_toNVVPlan"
+        android:layout_alignLeft="@+id/btn_toNVVPlan"
+        android:layout_marginBottom="30dp"
         android:onClick="onButtonClick"
-        android:src="@drawable/share" />
+        android:src="@drawable/pikto_buch" />
+    
+    <ImageButton
+        android:id="@+id/btn_toNVVPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="onButtonClick"
+        android:src="@drawable/pikto_haltestelle" />
 
     <ImageButton
         android:id="@+id/btn_navigate"
@@ -32,27 +43,21 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_share"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="30dp"
         android:onClick="onButtonClick"
         android:src="@drawable/navigation" />
 
+    
     <ImageButton
-        android:id="@+id/btn_toNVVPlan"
+        android:id="@+id/btn_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="30dp"
         android:onClick="onButtonClick"
-        android:src="@drawable/pikto_haltestelle" />
+        android:src="@drawable/share" />
 
-    <ImageButton
-        android:id="@+id/btn_toLibrary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_toNVVPlan"
-        android:layout_alignLeft="@+id/btn_toNVVPlan"
-        android:layout_marginBottom="20dp"
-        android:onClick="onButtonClick"
-        android:src="@drawable/pikto_buch" />
+    
+    </LinearLayout>
 
-</RelativeLayout>
