@@ -63,8 +63,8 @@ public class Root
 		bibsMap.put("2", new Bib(2, bibName, street, tel, eMail, fb, services));
 	}
 	
-	public Bib getBranch(String branch) {
-		return this.bibsMap.get(branch);
+	public Bib getBib(String bib) {
+		return this.bibsMap.get(bib);
 	}
 	
 	
