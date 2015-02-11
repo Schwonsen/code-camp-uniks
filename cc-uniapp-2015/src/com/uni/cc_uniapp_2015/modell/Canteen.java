@@ -1,16 +1,16 @@
-package com.uni.cc_uniapp_2015;
+package com.uni.cc_uniapp_2015.modell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Canteen {
 	
-	final static String ZENTRALMENSA_URL = "http://www.studentenwerk-kassel.de/188.html";
-	final static String K10_URL = "http://www.studentenwerk-kassel.de/144.html";
-	final static String MENSA_71_WA_URL = "http://www.studentenwerk-kassel.de/189.html";
-	final static String MENZELSTRASSE_URL = "http://www.studentenwerk-kassel.de/195.html";
-	final static String MENSA_H_P_S_URL = "http://www.studentenwerk-kassel.de/187.html";
-	final static String MENSA_WITZENHAUSEN = "http://www.studentenwerk-kassel.de/415.html";
+	public final static String ZENTRALMENSA_URL = "http://www.studentenwerk-kassel.de/188.html";
+	public final static String K10_URL = "http://www.studentenwerk-kassel.de/144.html";
+	public static String MENSA_71_WA_URL = "http://www.studentenwerk-kassel.de/189.html";
+	public static String MENZELSTRASSE_URL = "http://www.studentenwerk-kassel.de/195.html";
+	public static String MENSA_H_P_S_URL = "http://www.studentenwerk-kassel.de/187.html";
+	public static String MENSA_WITZENHAUSEN = "http://www.studentenwerk-kassel.de/415.html";
 	
 	
 	String name;

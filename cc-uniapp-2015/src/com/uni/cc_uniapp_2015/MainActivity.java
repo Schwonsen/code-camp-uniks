@@ -6,6 +6,9 @@ import java.util.concurrent.ExecutionException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import com.uni.cc_uniapp_2015.modell.Canteen;
+import com.uni.cc_uniapp_2015.util.CanteenMenuParser;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 
-					CanteenMenuParserTask parserTask =  new CanteenMenuParserTask();
+					CanteenMenuParser parserTask =  new CanteenMenuParser();
 					
 				 	try {
 						String test = parserTask.execute(new String[]{Canteen.K10_URL}).get();

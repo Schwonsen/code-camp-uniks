@@ -1,4 +1,4 @@
-package com.uni.cc_uniapp_2015;
+package com.uni.cc_uniapp_2015.util;
 
 import android.app.AlertDialog;
 import android.app.Service;

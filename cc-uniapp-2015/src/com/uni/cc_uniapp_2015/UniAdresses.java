@@ -2,6 +2,8 @@ package com.uni.cc_uniapp_2015;
 
 import java.util.Locale;
 
+import com.uni.cc_uniapp_2015.util.GPSFinder;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

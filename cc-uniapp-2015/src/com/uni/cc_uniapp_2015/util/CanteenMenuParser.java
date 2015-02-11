@@ -1,4 +1,4 @@
-package com.uni.cc_uniapp_2015;
+package com.uni.cc_uniapp_2015.util;
 
 import java.util.List;
 
@@ -10,14 +10,19 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.uni.cc_uniapp_2015.modell.Canteen;
+import com.uni.cc_uniapp_2015.modell.Day;
+import com.uni.cc_uniapp_2015.modell.Meal;
+
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class CanteenMenuParserTask extends AsyncTask<String, Void, String>{
+public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 	
     @Override
     protected String doInBackground(String... strings) {
     	Canteen canteen = null;
+    	String result = "";
         try {
             Log.d("JSwa", "Connecting to ["+strings[0]+"]");
             Document doc  = Jsoup.connect(strings[0]).get();
@@ -25,7 +30,7 @@ public class CanteenMenuParserTask extends AsyncTask<String, Void, String>{
             canteen = new Canteen();
             //parse canteen name
             String canteenName = doc.select("tr.thead").first().getElementsByTag("h1").text();
-            canteen.name = canteenName != "" ? canteenName : "K10"; //k10 has image as canteen name
+            canteen.setName(canteenName != "" ? canteenName : "K10"); //k10 has image as canteen name
 			// parse meals
             Elements topicList = doc.select("tr.items_row");    
             canteen.initDays();
@@ -67,17 +72,20 @@ public class CanteenMenuParserTask extends AsyncTask<String, Void, String>{
             	}
                 mealIdx++;
             }
+            result = generateJson(canteen);
         }
         catch(Throwable t) {
+        	result = "{'error' : 'no internet connection'}";
+        	Log.e("result", result);
             t.printStackTrace();
         }
- 
-        return generateJson(canteen);
+        return result;
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);    
+        Log.e("onPostExecute", s);
     }
     
     private String generateJson(Canteen canteen){
@@ -126,10 +134,8 @@ public class CanteenMenuParserTask extends AsyncTask<String, Void, String>{
 	            	dayObject.put("nameOfDay", day.getName());
 	            	days.put(dayObject);
 	            }
-				
 				canteenObject.put("days", days);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

@@ -1,4 +1,4 @@
-package com.uni.cc_uniapp_2015;
+package com.uni.cc_uniapp_2015.modell;
 
 import java.util.ArrayList;
 import java.util.List;
