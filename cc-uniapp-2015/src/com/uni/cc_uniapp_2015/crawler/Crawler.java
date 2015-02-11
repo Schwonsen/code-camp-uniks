@@ -84,6 +84,7 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 		return answer.toString();
 	}
 	
+	//solves character ä,ü,ö....problems
 	protected String removeTagsEntitys(String string)
 	{
 		string = string.replaceAll("<(.*?)>", " ")
@@ -93,5 +94,11 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 				.replaceAll("&#246;", "" + (char) 246);
 		return string.replaceAll("&(.*?);", " ");
 	}
+	
+	/*string = string.replaceAll("<(.*?)>", " ")
+				.replaceAll("&#252;", "" + (char) 252)
+				.replaceAll("&#223;", "" + (char) 223)
+				.replaceAll("&#228;", "" + (char) 228)
+				.replaceAll("&#246;", "" + (char) 246);*/
 	
 }

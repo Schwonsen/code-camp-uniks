@@ -22,10 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UniAdresses"></activity>
-        <activity android:name=".NvvActivity"></activity>
+        <activity android:name=".UniAdresses" >
+        </activity>
+        <activity android:name=".NvvActivity" >
+        </activity>
+        <activity
+            android:name=".BibActivity">
+        </activity>
     </application>
-    
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
