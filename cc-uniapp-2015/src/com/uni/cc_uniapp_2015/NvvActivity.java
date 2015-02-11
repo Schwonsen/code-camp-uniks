@@ -197,13 +197,13 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 					hoplaCheck = true;
 					korbaCheck = false;
 				}
-				else if(checkedId == R.id.radioKorba)
+				else if (checkedId == R.id.radioKorba)
 				{
 					williCheck = false;
 					hoplaCheck = false;
 					korbaCheck = true;
 				}
-				
+
 				ListView listView = (ListView) findViewById(R.id.listViewNvv);
 				listView.setAdapter(null);
 

@@ -23,67 +23,75 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-
-public class MainActivity extends ActionBarActivity {
-
+public class MainActivity extends ActionBarActivity
+{
 
 	public static boolean online;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		 online = isOnline();
-	        
-	        //Intent intent = new Intent(this, NvvActivity.class);
-			//startActivity(intent);
-			
-	    }
 
-	       
-	
-	
-	
+		online = isOnline();
+
+		// Intent intent = new Intent(this, NvvActivity.class);
+		// startActivity(intent);
+
+	}
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_settings)
+		{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
+
 	public void onButtonClick(View view){
 		if(view.getId() == R.id.btn_navigate){
 			//Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
+
 			startActivity(new Intent(this, UniAdresses.class));
 		}
-		else if(view.getId() == R.id.btn_toNVVPlan){
-			//Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
-			startActivity(new Intent(this,NvvActivity.class));
+		else if (view.getId() == R.id.btn_toNVVPlan)
+		{
+			// Toast.makeText(getApplicationContext(),
+			// "HALLO WELT",Toast.LENGTH_LONG).show();
+			startActivity(new Intent(this, NvvActivity.class));
 			NvvActivity.williCheck = true;
 		}
-		else if(view.getId() == R.id.btn_share){
+		else if (view.getId() == R.id.btn_share)
+		{
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/plain");
-			
-			intent.putExtra(android.content.Intent.EXTRA_TEXT, "Ich nutze die cc-uniapp-2015!");
+
+			intent.putExtra(android.content.Intent.EXTRA_TEXT,
+					"Ich nutze die cc-uniapp-2015!");
 			startActivity(intent);
 		}
-		else if(view.getId() == R.id.btn_toLibrary){
+		else if (view.getId() == R.id.btn_toLibrary)
+		{
 			startActivity(new Intent(this, BibActivity.class));
 		}
 	}
+
 	public boolean isOnline()
 	{
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -24,6 +24,7 @@ public class NvvCrawler extends Crawler
 	{
 		super(listener);
 	}
+
 	@Override
 	protected CrawlValue backgoundCrawl(Object[] params, CrawlValue crawlValue)
 	{
@@ -81,7 +82,7 @@ public class NvvCrawler extends Crawler
 		;
 		return null;
 	}
-	
+
 	public String checkUrl(String checkedUrl)
 	{
 		if (NvvActivity.hoplaCheck)

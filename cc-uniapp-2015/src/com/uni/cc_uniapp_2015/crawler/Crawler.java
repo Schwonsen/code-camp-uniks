@@ -35,13 +35,13 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 		return this.backgoundCrawl(params, crv);
 	}
 
-	protected abstract CrawlValue backgoundCrawl(Object[] params,
-			CrawlValue crv);
-	
-	protected void onPostExecute(CrawlValue result) {
+	protected abstract CrawlValue backgoundCrawl(Object[] params, CrawlValue crv);
+
+	protected void onPostExecute(CrawlValue result)
+	{
 		listener.onCrawlFinish(result);
-	}	
-	
+	}
+
 	protected Matcher getUrlMatcher(String URL, String RegEx)
 	{
 		String html = this.getHtml(URL);
@@ -65,9 +65,9 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 
 			URLConnection connection = website.openConnection();
 			InputStream is = connection.getInputStream();
-			
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"));
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(is,
+					"iso-8859-1"));
 
 			String inputLine;
 
@@ -83,8 +83,8 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 		}
 		return answer.toString();
 	}
-	
-	//solves character ä,ü,ö....problems
+
+	// solves character ä,ü,ö....problems
 	protected String removeTagsEntitys(String string)
 	{
 		string = string.replaceAll("<(.*?)>", " ")
@@ -93,5 +93,5 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 				.replaceAll("&#228;", "" + (char) 228)
 				.replaceAll("&#246;", "" + (char) 246);
 		return string.replaceAll("&(.*?);", " ");
-	}	
+	}
 }

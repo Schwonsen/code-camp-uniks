@@ -31,47 +31,53 @@
         android:layout_below="@+id/linearLayout1"
         android:orientation="vertical" >
 
-        <TimePicker
-            android:id="@+id/timePickerNvv"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true" />
-
-        <RadioGroup
-            android:id="@+id/radioNvv"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="21dp" >
+            android:orientation="vertical" >
 
-            <RadioButton
-                android:id="@+id/radioWilli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Willi" />
+            <TimePicker
+                android:id="@+id/timePickerNvv"
+                android:layout_width="match_parent"
+                android:layout_height="190dp" >
 
-            <RadioButton
-                android:id="@+id/radioHopla"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HoPla" />
-            
-            <RadioButton
-                android:id="@+id/radioKorba"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OVZ" />
-        </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/radioNvv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="21dp" >
+
+                    <RadioButton
+                        android:id="@+id/radioWilli"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Willi" />
+
+                    <RadioButton
+                        android:id="@+id/radioHopla"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HoPla" />
+
+                    <RadioButton
+                        android:id="@+id/radioKorba"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OVZ" />
+                </RadioGroup>
+            </TimePicker>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonSearchTram"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
             android:text="Suche" />
 
     </RelativeLayout>
