@@ -9,7 +9,7 @@
         <TextView
             android:id="@+id/bib_hopla"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -21,8 +21,6 @@
             android:id="@+id/bib_hopla_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/bib_hopla"
-            android:layout_alignTop="@+id/bib_hopla"
             android:layout_marginTop="20dp"
             android:orientation="vertical" >
 
@@ -110,7 +108,7 @@
         <TextView
             android:id="@+id/bib_bgp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -122,8 +120,6 @@
             android:id="@+id/bib_bgp_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/bib_hopla"
-            android:layout_alignTop="@+id/bib_hopla"
             android:layout_marginTop="20dp"
             android:orientation="vertical" >
 
@@ -178,7 +174,7 @@
         <TextView
             android:id="@+id/bib_wa"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -190,8 +186,6 @@
             android:id="@+id/bib_wa_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/bib_hopla"
-            android:layout_alignTop="@+id/bib_hopla"
             android:layout_marginTop="20dp"
             android:orientation="vertical" >
 
@@ -246,7 +240,7 @@
          <TextView
             android:id="@+id/bib_kunst"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -258,8 +252,6 @@
             android:id="@+id/bib_kunst_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/bib_hopla"
-            android:layout_alignTop="@+id/bib_hopla"
             android:layout_marginTop="20dp"
             android:orientation="vertical" >
 
@@ -314,7 +306,7 @@
          <TextView
             android:id="@+id/bib_oberzwehren"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -326,8 +318,6 @@
             android:id="@+id/bib_oberzwehren_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/bib_hopla"
-            android:layout_alignTop="@+id/bib_hopla"
             android:layout_marginTop="20dp"
             android:orientation="vertical" >
 

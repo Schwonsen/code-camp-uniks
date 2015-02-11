@@ -1,10 +1,8 @@
 package com.uni.cc_uniapp_2015;
 
-import com.uni.cc_uniapp_2015.util.GPSFinder;
 import com.uni.cc_uniapp_2015.util.Navigation;
 
 import android.support.v7.app.ActionBarActivity;
-import android.text.Layout;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class BibActivity extends ActionBarActivity
 {
