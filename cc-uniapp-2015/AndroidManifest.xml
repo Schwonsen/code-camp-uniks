@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.uni.cc_uniapp_2015.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +22,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UniAdresses" >
+        <activity android:name="com.uni.cc_uniapp_2015.UniAdresses" 
+            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
         </activity>
-        <activity android:name=".NvvActivity" >
+        <activity android:name="com.uni.cc_uniapp_2015.NvvActivity" 
+            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
         </activity>
         <activity
-            android:name=".BibActivity">
+            android:name="com.uni.cc_uniapp_2015.BibActivity"
+            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
         </activity>
  
     </application>
