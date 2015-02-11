@@ -11,7 +11,8 @@
     <string name="btn_ToNVVPlan">Straßenbahn-Pläne</string>
 	<string name="btn_Library">Bibliothek</string>
 	
-	
+	<string name="bib_opening_time_label">Öffnungszeiten</string>
+	<!-- Standort Holländischer Platz -->
     <string name="bib_hopla_titel">Standort Holländischer Platz</string>
     <string name="bib_hopla_description">\tIngenieurwissenschaften, Technik\n
 										 \tBereichsbibliothek 1\n
@@ -27,9 +28,59 @@
     <string name="bib_hopla_opening_time_bibgeb_title"><b>Bibliotheksgebäude</b></string>
     <string name="bib_hopla_opening_time_bibgeb">\tMo bis Fr: 8 bis 23 Uhr\n
 													\tSa und So: 10 bis 21 Uhr\n</string>
-            
+	<string name="bib_hopla_opening_time_service_title"><b>Servicetheke</b></string>
+    <string name="bib_hopla_opening_time_service">\tMo bis Fr: 9 bis 18 Uhr\n
+													\tSa: 10 bis 13 Uhr\n</string>
+	<string name="bib_hopla_opening_time_nutzerservice_title"><b>Nutzerservice</b></string>
+    <string name="bib_hopla_opening_time_nutzerservice">\tMo bis Fr: 9 bis 12 Uhr\n
+													\tDi und Do: 13 bis 16 Uhr\n
+													\tund nach Vereinbarung\n</string>
+	<!-- Standort Brüder-Grimm-Platz -->										
+    <string name="bib_bgp_titel">Standort Brüder-Grimm-Platz</string>
+    <string name="bib_bgp_description">\tLandesbibliothek und \n
+										\tMurhardsche Bibliothek der Stadt Kassel\n
+										\tBereichsbibliothek 6\n</string>
+    <string name="bib_bgp_address">Brüder-Grimm-Platz 4a\n34117 Kassel\n</string>
+    <string name="bib_bgp_email">bb6@bibliothek.uni-kassel.de\n</string>
+    <string name="bib_bgp_tel">+49 561 804-7337</string>
+    <string name="bib_bgp_opening_time">\tMo bis Fr: 9 bis 18 Uhr\n
+										\tSa: 10 bis 13 Uhr\n</string>
+										
+    <!-- Standort Wilhelmshöher Allee -->										
+    <string name="bib_wa_titel">Standort Wilhelmshöher Allee</string>
+    <string name="bib_wa_description">\tElektrotechnik und Informatik\n
+										\tBereichsbibliothek 7\n</string>
+    <string name="bib_wa_address">Wilhelmshöher Allee 73\n34121 Kassel\n</string>
+    <string name="bib_wa_email">bb7@bibliothek.uni-kassel.de\n</string>
+    <string name="bib_wa_tel">+49 561 804-6317</string>
+    <string name="bib_wa_opening_time">\tMo bis Do: 9 bis 18 Uhr\n
+										\tFr: 9 bis 16 Uhr\n</string>
+										
+    <!-- Standort Kunsthochschule -->										
+    <string name="bib_kunst_titel">Standort Kunsthochschule</string>
+    <string name="bib_kunst_description">\tKunsthochschulbibliothek\n
+										\tBereichsbibliothek 8\n</string>
+    <string name="bib_kunst_address">Menzelstraße 13,\n34121 Kassel\n</string>
+    <string name="bib_kunst_email">bb8@bibliothek.uni-kassel.de\n</string>
+    <string name="bib_kunst_tel">+49 561 804-5335</string>
+    <string name="bib_kunst_opening_time">\tMo und Fr: 10 bis 18 Uhr\n
+											\tDi bis Do: 10 bis 20 Uhr\n</string>
+	
+	<!-- Standort Oberzwehren -->										
+    <string name="bib_oberzwehren_titel">Standort Oberzwehren</string>
+    <string name="bib_oberzwehren_description">\tBerufspädagogik\n
+        										\tNaturwissenschaften\n
+        										\tMathematik\n
+												\tBereichsbibliothek 10\n</string>
+    <string name="bib_oberzwehren_address">Heinrich-Plett-Str. 40\n34132 Kassel\n</string>
+    <string name="bib_oberzwehren_email">bb10@bibliothek.uni-kassel.de\n</string>
+    <string name="bib_oberzwehren_tel">+49 561 804-4222</string>
+    <string name="bib_oberzwehren_opening_time">\tMo bis Fr: 9 bis 18 Uhr\n</string>
+	
 
-    <string name="btn_share">Sharen</string>
+    <string name="btn_share">Teilen</string>
+    <string name="btn_navigate">Navigieren</string>
+    
 
 
 </resources>

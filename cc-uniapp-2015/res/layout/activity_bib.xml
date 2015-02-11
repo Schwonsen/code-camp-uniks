@@ -5,7 +5,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-
+		<!-- Standort Holländischer Platz -->
         <TextView
             android:id="@+id/bib_hopla"
             android:layout_width="match_parent"
@@ -30,55 +30,93 @@
                 android:id="@+id/bib_hopla_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bib_hopla_address" />
+                android:text="@string/bib_hopla_address" 
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             
             <TextView
                 android:id="@+id/bib_hopla_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/bib_hopla_description" />
 
             <TextView
                 android:id="@+id/bib_hopla_tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/bib_hopla_tel" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_opening_time_label" />
             
             <TextView
                 android:id="@+id/bib_hopla_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/bib_hopla_email" />
             <TextView
                 android:id="@+id/bib_hopla_opening_time_bibgeb_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/bib_hopla_opening_time_bibgeb_title" />
             <TextView
                 android:id="@+id/bib_hopla_opening_time_bibgeb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/bib_hopla_opening_time_bibgeb" />
+            <TextView
+                android:id="@+id/bib_hopla_opening_time_service_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_hopla_opening_time_service_title" />
+            <TextView
+                android:id="@+id/bib_hopla_opening_time_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_hopla_opening_time_service" />
+        
+            <TextView
+                android:id="@+id/bib_hopla_opening_time_nutzerservice_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_hopla_opening_time_nutzerservice_title" />
+            <TextView
+                android:id="@+id/bib_hopla_opening_time_nutzerservice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_hopla_opening_time_nutzerservice" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/navigateToHopla"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:onClick="navigateTo"     
+                android:text="@string/btn_navigate" />
         </LinearLayout>
 
+        <!-- Standort Brüder-Grimm-Platz -->
         <TextView
             android:id="@+id/bib_bgp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_above="@+id/bib_hopla_content"
             android:clickable="true"
             android:onClick="toggle_contents"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/bib_hopla_titel" 
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:text="@string/bib_bgp_titel" 
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <LinearLayout
             android:id="@+id/bib_bgp_content"
@@ -93,22 +131,253 @@
                 android:id="@+id/bib_bgp_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bib_hopla_address" />
+                android:text="@string/bib_bgp_address" 
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            
+            <TextView
+                android:id="@+id/bib_bgp_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_bgp_description" />
 
             <TextView
                 android:id="@+id/bib_bgp_tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bib_hopla_tel" />
-
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_bgp_tel" />
+            
+            <TextView
+                android:id="@+id/bib_bgp_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_bgp_email" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_opening_time_label" />
+            <TextView
+                android:id="@+id/bib_bgp_opening_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_bgp_opening_time" />
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/navigateToBgp"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
-
+                android:onClick="navigateTo"     
+                android:text="@string/btn_navigate" />
         </LinearLayout>
+        
+        <!-- Standort Wilhelmshöher Allee -->
+        <TextView
+            android:id="@+id/bib_wa"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:onClick="toggle_contents"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="@string/bib_wa_titel" 
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/bib_wa_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bib_hopla"
+            android:layout_alignTop="@+id/bib_hopla"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bib_wa_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bib_wa_address" 
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            
+            <TextView
+                android:id="@+id/bib_wa_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_wa_description" />
+
+            <TextView
+                android:id="@+id/bib_wa_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_wa_tel" />
+            
+            <TextView
+                android:id="@+id/bib_wa_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_wa_email" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_opening_time_label" />
+            <TextView
+                android:id="@+id/bib_wa_opening_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_wa_opening_time" />
+            <Button
+                android:id="@+id/navigateToWA"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="navigateTo"     
+                android:text="@string/btn_navigate" />
+        </LinearLayout>
+        
+         <!-- Standort Kunsthochschule -->
+         <TextView
+            android:id="@+id/bib_kunst"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:onClick="toggle_contents"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="@string/bib_kunst_titel" 
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/bib_kunst_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bib_hopla"
+            android:layout_alignTop="@+id/bib_hopla"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bib_kunst_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bib_kunst_address" 
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            
+            <TextView
+                android:id="@+id/bib_kunst_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_kunst_description" />
+
+            <TextView
+                android:id="@+id/bib_kunst_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_kunst_tel" />
+            
+            <TextView
+                android:id="@+id/bib_kunst_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_kunst_email" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_opening_time_label" />
+            <TextView
+                android:id="@+id/bib_kunst_opening_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_kunst_opening_time" />
+            <Button
+                android:id="@+id/navigateToKunst"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="navigateTo"     
+                android:text="@string/btn_navigate" />
+        </LinearLayout>
+        
+        <!-- Standort Standort Oberzwehren -->
+         <TextView
+            android:id="@+id/bib_oberzwehren"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:onClick="toggle_contents"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="@string/bib_oberzwehren_titel" 
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/bib_oberzwehren_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bib_hopla"
+            android:layout_alignTop="@+id/bib_hopla"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bib_oberzwehren_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bib_oberzwehren_address" 
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            
+            <TextView
+                android:id="@+id/bib_oberzwehren_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_oberzwehren_description" />
+
+            <TextView
+                android:id="@+id/bib_oberzwehren_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_oberzwehren_tel" />
+            
+            <TextView
+                android:id="@+id/bib_oberzwehren_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_oberzwehren_email" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_opening_time_label" />
+            <TextView
+                android:id="@+id/bib_oberzwehren_opening_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bib_oberzwehren_opening_time" />
+            <Button
+                android:id="@+id/navigateToOberzwehren"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="navigateTo"     
+                android:text="@string/btn_navigate" />
+        </LinearLayout>
+         
 	</LinearLayout>
 </ScrollView>
 
