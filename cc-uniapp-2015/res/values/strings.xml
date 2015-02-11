@@ -9,6 +9,26 @@
     <string name="txt_Adress_AVZ">Standort AVZ, Heinrich-Plett-Straße 40, 34132 Kassel</string>
     <string name="btn_ToAdressesTEMP">Uni Adressen</string>
     <string name="btn_ToNVVPlan">Straßenbahn-Pläne</string>
+	<string name="btn_Library">Bibliothek</string>
+	
+	
+    <string name="bib_hopla_titel">Standort Holländischer Platz</string>
+    <string name="bib_hopla_description">\tIngenieurwissenschaften, Technik\n
+										 \tBereichsbibliothek 1\n
+											\tSprach- und Literaturwissenschaften1\n
+											\tBereichsbibliothek 21\n
+											\tWirtschaft, Recht, Sport1\n
+											\tBereichsbibliothek 31\n
+											\tGeistes- und Gesellschaftswissenschaften1\n
+											\tBereichsbibliothek 4/5\n</string>
+    <string name="bib_hopla_address">Diagonale 10, 34127 Kassel\n</string>
+    <string name="bib_hopla_email">info@bibliothek.uni-kassel.de\n</string>
+    <string name="bib_hopla_tel">+49 561 804-7711</string>
+    <string name="bib_hopla_opening_time_bibgeb_title"><b>Bibliotheksgebäude</b></string>
+    <string name="bib_hopla_opening_time_bibgeb">\tMo bis Fr: 8 bis 23 Uhr\n
+													\tSa und So: 10 bis 21 Uhr\n</string>
+            
+
     <string name="btn_share">Sharen</string>
 
 

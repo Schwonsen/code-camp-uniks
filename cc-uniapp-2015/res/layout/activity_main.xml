@@ -53,5 +53,15 @@
         android:layout_marginTop="54dp"
         android:onClick="onButtonClick"
         android:text="Button" />
+    
+    <Button
+        android:id="@+id/btn_toLibrary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_toNVVPlan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="onButtonClick"
+        android:text="@string/btn_Library" />
 
 </RelativeLayout>
