@@ -95,8 +95,9 @@ public class MainActivity extends ActionBarActivity {
 			startActivity(new Intent(this, UniAdresses.class));
 		}
 		else if(view.getId() == R.id.btn_toNVVPlan){
-			Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
+			//Toast.makeText(getApplicationContext(), "HALLO WELT",Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this,NvvActivity.class));
+			NvvActivity.williCheck = true;
 		}
 		else if(view.getId() == R.id.btn_share){
 			Intent intent = new Intent(Intent.ACTION_SEND);

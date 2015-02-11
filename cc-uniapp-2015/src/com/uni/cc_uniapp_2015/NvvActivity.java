@@ -102,8 +102,8 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 
 		for (String input : crawVal.getKeys())
 		{
-			String tramInfos = crawVal.getValue(input).get(0) + " " + " "
-					+ crawVal.getValue(input).get(1) + " "
+			String tramInfos = crawVal.getValue(input).get(0) + " "
+					+ crawVal.getValue(input).get(1) + "\n"
 					+ crawVal.getValue(input).get(2);
 
 			if (listItems.size() == 0)
@@ -188,8 +188,8 @@ public class NvvActivity extends ActionBarActivity implements Crawls
 				if (checkedId == R.id.radioWilli)
 				{
 					williCheck = true;
-					korbaCheck = false;
 					hoplaCheck = false;
+					korbaCheck = false;
 				}
 				else if (checkedId == R.id.radioHopla)
 				{

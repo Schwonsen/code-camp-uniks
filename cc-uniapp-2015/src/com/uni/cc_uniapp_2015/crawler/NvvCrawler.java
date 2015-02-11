@@ -24,24 +24,6 @@ public class NvvCrawler extends Crawler
 	{
 		super(listener);
 	}
-
-	public String checkUrl(String checkedUrl)
-	{
-		if (NvvActivity.hoplaCheck)
-		{
-			checkedUrl = PRE_URL_HOPLA;
-		}
-		else if (NvvActivity.williCheck)
-		{
-			checkedUrl = PRE_URL_MURHARD;
-		}
-		else if (NvvActivity.korbaCheck)
-		{
-			checkedUrl = PRE_URL_KOR_UNI;
-		}
-		return checkedUrl;
-	}
-
 	@Override
 	protected CrawlValue backgoundCrawl(Object[] params, CrawlValue crawlValue)
 	{
@@ -99,8 +81,21 @@ public class NvvCrawler extends Crawler
 		;
 		return null;
 	}
+	
+	public String checkUrl(String checkedUrl)
+	{
+		if (NvvActivity.hoplaCheck)
+		{
+			checkedUrl = PRE_URL_HOPLA;
+		}
+		else if (NvvActivity.williCheck)
+		{
+			checkedUrl = PRE_URL_MURHARD;
+		}
+		else if (NvvActivity.korbaCheck)
+		{
+			checkedUrl = PRE_URL_KOR_UNI;
+		}
+		return checkedUrl;
+	}
 }
-
-/*
- 
-*/
