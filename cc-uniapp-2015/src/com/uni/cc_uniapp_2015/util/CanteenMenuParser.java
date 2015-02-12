@@ -62,11 +62,17 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
             			Day day = days.get(idx - 1);
             			Meal meal = day.getListOfMeals().get(mealIdx);
             			String[] prices = coll.text().replace("€", "").split("/");
+            			String priceStud = "";
+            			String priceEmpl = "";
+            			String priceOther = "";
             			if (prices.length == 3){
-            				meal.setPriceStud(prices[0]);
-                			meal.setPriceEmpl(prices[1]);
-                			meal.setPriceOther(prices[2]);
+            				priceStud = prices[0];
+            				priceEmpl = prices[1];
+            				priceOther =  prices[2];
             			}
+            			meal.setPriceStud(priceStud);
+            			meal.setPriceEmpl(priceEmpl);
+            			meal.setPriceOther(priceOther);
             		}	
             		idx++;
             	}
@@ -85,7 +91,6 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);    
-        Log.e("onPostExecute", s);
     }
     
     private String generateJson(Canteen canteen){
