@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">cc-uniapp-2015</string>
-    <string name="hello_world">test</string>
+    <string name="app_name">CampusApp</string>
+    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="title_activity_gps_start">GpsStartActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
     <string name="txt_Adress_WilliAllee">Standort Ing.-Schule, Wilhelmshöher Allee 73, 34121 Kassel</string>
     <string name="txt_Adress_HoPla">Standort Holländischer Platz, </string>
     <string name="txt_Adress_AVZ">Standort AVZ, Heinrich-Plett-Straße 40, 34132 Kassel</string>
     <string name="btn_ToAdressesTEMP">Uni Adressen</string>
     <string name="btn_ToNVVPlan">Straßenbahn-Pläne</string>
-	<string name="btn_Library">Bibliothek</string>
-	
-	<string name="bib_opening_time_label">Öffnungszeiten</string>
-	<!-- Standort Holländischer Platz -->
+    <string name="title_activity_bib_start">BibStartActivity</string>
+
+
+
+    <string name="btn_Library">Bibliothek</string>
+
+    <string name="bib_opening_time_label"><b><u>Öffnungszeiten:</u></b></string>
+    <string name="bib_contact"><b><u>Kontakt:</u></b></string>
+    <!-- Standort Holländischer Platz -->
     <string name="bib_hopla_titel">Standort Holländischer Platz</string>
     <string name="bib_hopla_description">\tIngenieurwissenschaften, Technik\n
 										 \tBereichsbibliothek 1\n
@@ -28,14 +37,14 @@
     <string name="bib_hopla_opening_time_bibgeb_title"><b>Bibliotheksgebäude</b></string>
     <string name="bib_hopla_opening_time_bibgeb">\tMo bis Fr: 8 bis 23 Uhr\n
 													\tSa und So: 10 bis 21 Uhr\n</string>
-	<string name="bib_hopla_opening_time_service_title"><b>Servicetheke</b></string>
+    <string name="bib_hopla_opening_time_service_title"><b>Servicetheke</b></string>
     <string name="bib_hopla_opening_time_service">\tMo bis Fr: 9 bis 18 Uhr\n
 													\tSa: 10 bis 13 Uhr\n</string>
-	<string name="bib_hopla_opening_time_nutzerservice_title"><b>Nutzerservice</b></string>
+    <string name="bib_hopla_opening_time_nutzerservice_title"><b>Nutzerservice</b></string>
     <string name="bib_hopla_opening_time_nutzerservice">\tMo bis Fr: 9 bis 12 Uhr\n
 													\tDi und Do: 13 bis 16 Uhr\n
 													\tund nach Vereinbarung\n</string>
-	<!-- Standort Brüder-Grimm-Platz -->										
+    <!-- Standort Brüder-Grimm-Platz -->
     <string name="bib_bgp_titel">Standort Brüder-Grimm-Platz</string>
     <string name="bib_bgp_description">\tLandesbibliothek und \n
 										\tMurhardsche Bibliothek der Stadt Kassel\n
@@ -45,8 +54,8 @@
     <string name="bib_bgp_tel">+49 561 804-7337</string>
     <string name="bib_bgp_opening_time">\tMo bis Fr: 9 bis 18 Uhr\n
 										\tSa: 10 bis 13 Uhr\n</string>
-										
-    <!-- Standort Wilhelmshöher Allee -->										
+
+    <!-- Standort Wilhelmshöher Allee -->
     <string name="bib_wa_titel">Standort Wilhelmshöher Allee</string>
     <string name="bib_wa_description">\tElektrotechnik und Informatik\n
 										\tBereichsbibliothek 7\n</string>
@@ -55,8 +64,8 @@
     <string name="bib_wa_tel">+49 561 804-6317</string>
     <string name="bib_wa_opening_time">\tMo bis Do: 9 bis 18 Uhr\n
 										\tFr: 9 bis 16 Uhr\n</string>
-										
-    <!-- Standort Kunsthochschule -->										
+
+    <!-- Standort Kunsthochschule -->
     <string name="bib_kunst_titel">Standort Kunsthochschule</string>
     <string name="bib_kunst_description">\tKunsthochschulbibliothek\n
 										\tBereichsbibliothek 8\n</string>
@@ -65,8 +74,8 @@
     <string name="bib_kunst_tel">+49 561 804-5335</string>
     <string name="bib_kunst_opening_time">\tMo und Fr: 10 bis 18 Uhr\n
 											\tDi bis Do: 10 bis 20 Uhr\n</string>
-	
-	<!-- Standort Oberzwehren -->										
+
+    <!-- Standort Oberzwehren -->
     <string name="bib_oberzwehren_titel">Standort Oberzwehren</string>
     <string name="bib_oberzwehren_description">\tBerufspädagogik\n
         										\tNaturwissenschaften\n
@@ -76,14 +85,8 @@
     <string name="bib_oberzwehren_email">bb10@bibliothek.uni-kassel.de\n</string>
     <string name="bib_oberzwehren_tel">+49 561 804-4222</string>
     <string name="bib_oberzwehren_opening_time">\tMo bis Fr: 9 bis 18 Uhr\n</string>
-	
+
 
     <string name="btn_share">Teilen</string>
     <string name="btn_navigate">Navigieren</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_launcher">LauncherActivity</string>
-    <string name="title_activity_gps_start">GpsStartActivity</string>
-    <string name="title_activity_maps">MapsActivity</string>
-    <string name="title_activity_bib_start">BibStartActivity</string>
-
 </resources>

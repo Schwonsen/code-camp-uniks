@@ -82,7 +82,7 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
             in.close();
         } catch (Exception e)
         {
-            System.out.println("Error: Crawler donÂ´t get html:");
+            System.out.println("Error: Crawler don´t get html:");
             e.printStackTrace();
         }
         return answer.toString();

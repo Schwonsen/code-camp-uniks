@@ -12,23 +12,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
 public class BibStartActivity extends Activity
 {
-	LinearLayout bib_hopla_content;
+    LinearLayout bib_hopla_content;
 	LinearLayout bib_bgp_content;
 	LinearLayout bib_wa_content;
 	LinearLayout bib_kunst_content;
 	LinearLayout bib_oberzwehren_content;
 	Navigation navigation;
+    ImageView bibImageView;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mybibview);
+
+        bibImageView = (ImageView) findViewById(R.id.bibImageView);
+
 		bib_hopla_content = (LinearLayout) findViewById(R.id.bib_hopla_content);
 		bib_bgp_content = (LinearLayout) findViewById(R.id.bib_bgp_content);
 		bib_wa_content = (LinearLayout) findViewById(R.id.bib_wa_content);
@@ -42,7 +48,6 @@ public class BibStartActivity extends Activity
 		bib_oberzwehren_content.setVisibility(View.GONE);
 		bib_wa_content.setVisibility(View.GONE);
 		navigation = new Navigation(this);
-	
 	}
 
 	@Override
@@ -131,16 +136,16 @@ public class BibStartActivity extends Activity
 			navigation.navigateTo("Diagonale+10,+34127+Kassel");
 		} 
 		else if(view.getId() == R.id.navigateToBgp) {
-			navigation.navigateTo("Br√ºder-Grimm-Platz+4A,+34117+Kassel");
+			navigation.navigateTo("Br¸der-Grimm-Platz+4A,+34117+Kassel");
 		}
 		else if(view.getId() == R.id.navigateToWA) {
-			navigation.navigateTo("Wilhelmsh√∂her+Allee+73,+34121+Kassel");
+			navigation.navigateTo("Wilhelmshˆher+Allee+73,+34121+Kassel");
 		}
 		else if(view.getId() == R.id.navigateToKunst) {
-			navigation.navigateTo("Menzelstra√üe+13,+34121+Kassel");
+			navigation.navigateTo("Menzelstraﬂe+13,+34121+Kassel");
 		}
 		else if(view.getId() == R.id.navigateToOberzwehren) {
-			navigation.navigateTo("Heinrich-Plett-Stra√üe+40,+34132+Kassel");
+			navigation.navigateTo("Heinrich-Plett-Straﬂe+40,+34132+Kassel");
 		}
 		
 	}

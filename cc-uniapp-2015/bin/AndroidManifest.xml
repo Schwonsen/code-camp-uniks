@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
     <application
@@ -13,7 +13,50 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
+            android:name="com.uni.cc_uniapp_2015.activities.MensaStartActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" android:parentActivityName="com.uni.cc_uniapp_2015.activities.LauncherActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.activities.LauncherActivity" />
+        </activity>
+        <activity
+            android:name="com.uni.cc_uniapp_2015.activities.NvvStartActivity"
+            android:label="@string/title_activity_main"
+			android:parentActivityName="com.uni.cc_uniapp_2015.activities.LauncherActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.activities.LauncherActivity" />
+            //android:theme="@style/Transparent">
+        </activity>
+        <activity
+            android:name="com.uni.cc_uniapp_2015.activities.LauncherActivity"
+            android:label="@string/title_activity_launcher" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.uni.cc_uniapp_2015.activities.BibStartActivity"
+            android:label="@string/title_activity_bib_start"
+            android:parentActivityName="com.uni.cc_uniapp_2015.activities.LauncherActivity" >
+        	<!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.uni.cc_uniapp_2015.activities.LauncherActivity" />
+            //android:theme="@style/Transparent" >
+        </activity>
+        
+        
+        
+        
+     <!--   <activity
             android:name="com.uni.cc_uniapp_2015.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
@@ -22,33 +65,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.uni.cc_uniapp_2015.UniAdresses" 
-            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
-        	<!-- Parent activity meta-data to support 4.0 and lower -->
-	        <meta-data
-	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
-        </activity>
-        <activity android:name="com.uni.cc_uniapp_2015.NvvActivity" 
-            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
-        	<!-- Parent activity meta-data to support 4.0 and lower -->
-	        <meta-data
-	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.uni.cc_uniapp_2015.BibActivity"
-            android:parentActivityName="com.uni.cc_uniapp_2015.MainActivity" >
-        	<!-- Parent activity meta-data to support 4.0 and lower -->
-	        <meta-data
-	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.uni.cc_uniapp_2015.MainActivity" />
-        </activity>
+     --> 
+     
  
     </application>
-
+    
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  
 
 </manifest>

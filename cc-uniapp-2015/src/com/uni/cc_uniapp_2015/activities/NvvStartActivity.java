@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
@@ -32,11 +33,16 @@ public class NvvStartActivity extends Activity implements Crawls
     public static boolean hoplaCheck;
     public static boolean korbaCheck;
 
+    ImageView nvvImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nvv);
+
+        nvvImageView = (ImageView) findViewById(R.id.nvvImageView);
+
 
         Calendar c = Calendar.getInstance();
         int hours = c.get(Calendar.HOUR_OF_DAY);

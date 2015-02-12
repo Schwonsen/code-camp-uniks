@@ -113,6 +113,11 @@ public class LauncherActivity extends Activity implements SensorEventListener {
                         putExtra(PACKAGENAME + ".height", view.getHeight()).
                         putExtra(PACKAGENAME + ".description", "description");
                 startActivity(subActivity);
+                
+                if(view.getId() == R.id.nvvButton)
+                {
+                    NvvStartActivity.williCheck = true;
+                }
 
                 // Override transitions: we don't want the normal window animation in addition
                 // to our custom one

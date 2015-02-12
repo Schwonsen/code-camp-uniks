@@ -82,7 +82,7 @@
         </ScrollView>
 
     <ImageView
-        android:id="@+id/mImageView"
+        android:id="@+id/nvvImageView"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="#fafa00"/>

@@ -7,17 +7,17 @@ import com.uni.cc_uniapp_2015.activities.NvvStartActivity;
 
 public class NvvCrawler extends Crawler
 {
-	 // crawler URL for "Murhardstra√üe Uni....."
-    private static final String PRE_URL_MURHARD = "http://auskunft.nvv.de/nvv/bin/jp/stboard.exe/"
-            + "dn?L=vs_rmv.vs_nvv&showStBoard=yes&input=2200057&time=";
+    private static final String PRE_URL = "http://auskunft.nvv.de/nvv/bin/jp/stboard.exe/"
+            + "dn?L=vs_rmv.vs_nvv&showStBoard=yes&input=";
+
+    // crawler URL for "Murhardstraﬂe Uni....."
+    private static final String ID_URL_MURHARD = "2200057&time=";
 
     // crawler URL for "HoPla"
-    private static final String PRE_URL_HOPLA = "http://auskunft.nvv.de/nvv/bin/jp/stboard.exe/"
-            + "dn?L=vs_rmv.vs_nvv&showStBoard=yes&input=2200014&time=";
+    private static final String ID_URL_HOPLA = "2200014&time=";
 
     // crawler URL for "Korbach Uni"
-    private static final String PRE_URL_KOR_UNI = "http://auskunft.nvv.de/nvv/bin/jp/stboard.exe/"
-            + "dn?L=vs_rmv.vs_nvv&showStBoard=yes&input=2200229&time=";
+    private static final String ID_URL_KOR_UNI = "2200229&time=";
 
     private static final String POST_URL = "&start=yes";
 
@@ -38,7 +38,7 @@ public class NvvCrawler extends Crawler
 
             checkedUrl = checkUrl(checkedUrl);
 
-            Matcher matcher = getUrlMatcher(PRE_URL_MURHARD + time + POST_URL,
+            Matcher matcher = getUrlMatcher(PRE_URL + checkedUrl + time + POST_URL,
                     regex);
 
             while (matcher.find())
@@ -88,15 +88,15 @@ public class NvvCrawler extends Crawler
     {
         if (NvvStartActivity.hoplaCheck)
         {
-            checkedUrl = PRE_URL_HOPLA;
+            checkedUrl = ID_URL_HOPLA;
         }
         else if (NvvStartActivity.williCheck)
         {
-            checkedUrl = PRE_URL_MURHARD;
+            checkedUrl = ID_URL_MURHARD;
         }
         else if (NvvStartActivity.korbaCheck)
         {
-            checkedUrl = PRE_URL_KOR_UNI;
+            checkedUrl = ID_URL_KOR_UNI;
         }
         return checkedUrl;
     }
