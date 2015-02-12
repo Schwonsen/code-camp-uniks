@@ -10,15 +10,26 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.uni.cc_uniapp_2015.activities.MensaStartActivity;
+import com.uni.cc_uniapp_2015.helper.StorageHelper;
 import com.uni.cc_uniapp_2015.modell.Canteen;
 import com.uni.cc_uniapp_2015.modell.Day;
 import com.uni.cc_uniapp_2015.modell.Meal;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class CanteenMenuParser extends AsyncTask<String, Void, String>{
-	
+	 
+	Context context;
+    String key;
+    public CanteenMenuParser(Context context,String storingKey){
+        this.context=context;
+        this.key=storingKey;
+    }
+
     @Override
     protected String doInBackground(String... strings) {
     	Canteen canteen = null;
@@ -90,7 +101,15 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 
     @Override
     protected void onPostExecute(String s) {
-        super.onPostExecute(s);    
+        super.onPostExecute(s);
+        if(!s.equals("{'error' : 'no data'}")) {
+            StorageHelper.storeData(context, key, s);
+        }else {
+            Toast.makeText(context,"failed to load data for mensa :"+key,Toast.LENGTH_SHORT).show();
+        }
+        if(StorageHelper.getData(context, key).equals("")) {
+            MensaStartActivity.myFakeTextView.setText(MensaStartActivity.myFakeTextView.getText().toString());
+        }
     }
     
     private String generateJson(Canteen canteen){

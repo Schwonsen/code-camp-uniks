@@ -80,7 +80,10 @@
 
     <string name="btn_share">Teilen</string>
     <string name="btn_navigate">Navigieren</string>
-    
-
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="title_activity_gps_start">GpsStartActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_bib_start">BibStartActivity</string>
 
 </resources>

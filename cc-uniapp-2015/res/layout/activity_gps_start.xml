@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_toIngSchool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:onClick="onButtonClick"
+        android:text="@string/txt_Adress_WilliAllee" />
+
+    <Button
+        android:id="@+id/btn_toHoPla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:onClick="onButtonClick"
+        android:text="@string/txt_Adress_HoPla" />
+
+    <Button
+        android:id="@+id/btn_toAVZ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:onClick="onButtonClick"
+        android:text="@string/txt_Adress_AVZ" />
+
+</LinearLayout>

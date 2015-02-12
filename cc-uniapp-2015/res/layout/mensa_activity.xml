@@ -1,0 +1,117 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mybackground">
+
+
+    <LinearLayout
+        android:id="@+id/mlayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="113dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/mo_button"
+                android:layout_width="0dp"
+                android:tag="0"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:text="Mo"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#222"
+                android:background="@drawable/daybackgroundtab"/>
+            <Button
+                android:id="@+id/di_button"
+                android:layout_width="0dp"
+                android:tag="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:text="Di"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#222"
+                android:background="@drawable/daybackgroundtab"/>
+            <Button
+                android:id="@+id/mi_button"
+                android:layout_width="0dp"
+                android:tag="2"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:text="Mi"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#222"
+                android:background="@drawable/daybackgroundtab"/>
+            <Button
+                android:id="@+id/do_button"
+                android:layout_width="0dp"
+                android:tag="3"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:text="Do"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#222"
+                android:background="@drawable/daybackgroundtab"/>
+            <Button
+                android:id="@+id/fr_button"
+                android:layout_width="0dp"
+                android:tag="4"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="0dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Fr"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#222"
+                android:background="@drawable/daybackgroundtab"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <FrameLayout
+            android:id="@+id/sample_content_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+    <view
+        class="animation.ShadowLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/shadowLayout"
+        android:visibility="visible" >
+    </view>
+    <ImageView
+        android:id="@+id/mImageView"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#fafa00"/>
+    <TextView
+        android:id="@+id/mTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+

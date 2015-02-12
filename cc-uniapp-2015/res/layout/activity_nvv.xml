@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
@@ -36,7 +37,8 @@
             <TimePicker
                 android:id="@+id/timePickerNvv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:timePickerMode="spinner">
 
                 <RadioGroup
                     android:id="@+id/radioNvv"
@@ -65,15 +67,17 @@
                         android:layout_height="wrap_content"
                         android:text="AVZ" />
                 </RadioGroup>
+                <ImageButton
+                    android:id="@+id/buttonSearchTram"
+                    android:src="@drawable/refreshicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="75dp"
+                    android:layout_gravity="right"/>
             </TimePicker>
-
-            <Button
-                android:id="@+id/buttonSearchTram"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Suche" />
         </RelativeLayout>
         </ScrollView>
 
@@ -82,8 +86,4 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="#fafa00"/>
-    <TextView
-        android:id="@+id/mTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </RelativeLayout>
