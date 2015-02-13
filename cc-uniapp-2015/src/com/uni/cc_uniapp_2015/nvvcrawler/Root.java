@@ -1,6 +1,5 @@
 package com.uni.cc_uniapp_2015.nvvcrawler;
 
-
 public class Root
 {
 	private static Root instance = null;

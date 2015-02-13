@@ -23,228 +23,221 @@ import com.uni.cc_uniapp_2015.nvvcrawler.Crawls;
 import com.uni.cc_uniapp_2015.nvvcrawler.NvvCrawler;
 import com.uni.cc_uniapp_2015.nvvcrawler.Root;
 
-
-/**
- * Created by Maxim on 10.02.2015.
- */
 public class NvvStartActivity extends Activity implements Crawls
 {
-    public static boolean williCheck;
-    public static boolean hoplaCheck;
-    public static boolean korbaCheck;
+	public static boolean williCheck;
+	public static boolean hoplaCheck;
+	public static boolean korbaCheck;
 
-    ImageView nvvImageView;
+	ImageView nvvImageView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nvv);
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_nvv);
 
-        nvvImageView = (ImageView) findViewById(R.id.nvvImageView);
+		nvvImageView = (ImageView) findViewById(R.id.nvvImageView);
 
+		Calendar c = Calendar.getInstance();
+		int hours = c.get(Calendar.HOUR_OF_DAY);
+		int minutes = c.get(Calendar.MINUTE);
 
-        Calendar c = Calendar.getInstance();
-        int hours = c.get(Calendar.HOUR_OF_DAY);
-        int minutes = c.get(Calendar.MINUTE);
+		String time = "";
+		time = setTimer(hours, minutes, time);
 
-        String time = "";
-        time = setTimer(hours, minutes, time);
+		createThis(hours, minutes);
 
-        createThis(hours, minutes);
+		if (Root.getInsRoot().getNvvInfos() == null)
+		{
+			Object[] parameters = { time };
+			NvvCrawler nvv = new NvvCrawler(this);
+			if (!OnlineHelper.isOnline(this))
+			{
+				createInterface();
+				Toast.makeText(getApplicationContext(),
+						"Keine Internetverbindung.", Toast.LENGTH_SHORT).show();
+			}
+			else
+			{
+				nvv.fetch(parameters);
+			}
+		}
+		else
+		{
+			createInterface();
+		}
+	}
 
-        if (Root.getInsRoot().getNvvInfos() == null)
-        {
-            Object[] parameters = { time };
-            NvvCrawler nvv = new NvvCrawler(this);
-            if (!OnlineHelper.isOnline(this))
-            {
-                createInterface();
-                Toast.makeText(getApplicationContext(),
-                        "Keine Internetverbindung.", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                nvv.fetch(parameters);
-            }
-        }
-        else
-        {
-            createInterface();
-        }
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.nvv, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.nvv, menu);
-        return true;
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings)
+		{
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings)
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	public void createInterface()
+	{
+		if (!OnlineHelper.isOnline(this))
+		{
+			return;
+		}
+		CrawlValue crawVal = Root.getInsRoot().getNvvInfos();
+		ListView listView = (ListView) findViewById(R.id.listViewNvv);
+		ArrayAdapter<String> itemAdapter;
+		ArrayList<String> listItems = new ArrayList<String>();
 
-    public void createInterface()
-    {
-        if (!OnlineHelper.isOnline(this))
-        {
-            return;
-        }
+		for (String input : crawVal.getKeys())
+		{
+			String tramInfos = crawVal.getValue(input).get(0) + "            * "
+					+ crawVal.getValue(input).get(1) + "*" + "\n"
+					+ crawVal.getValue(input).get(2);
 
-        CrawlValue crawVal = Root.getInsRoot().getNvvInfos();
-        ListView listView = (ListView) findViewById(R.id.listViewNvv);
-        ArrayAdapter<String> itemAdapter;
-        ArrayList<String> listItems = new ArrayList<String>();
+			if (listItems.size() == 0)
+			{
+				listItems.add(tramInfos);
+			}
+			else
+			{
+				int currentTime = getTime(crawVal.getValue(input).get(0));
+				int listPosition = 0;
 
-        for (String input : crawVal.getKeys())
-        {
-            String tramInfos = crawVal.getValue(input).get(0) + "            * "
-                    + crawVal.getValue(input).get(1) + "*" + "\n"
-                    + crawVal.getValue(input).get(2);
+				for (String listItem : listItems)
+				{
+					if (currentTime < getTime(listItem))
+					{
+						break;
+					}
+					listPosition++;
+				}
+				listItems.add(listPosition, tramInfos);
+			}
+		}
+		itemAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, listItems);
+		listView.setAdapter(itemAdapter);
+	}
 
-            if (listItems.size() == 0)
-            {
-                listItems.add(tramInfos);
-            }
-            else
-            {
-                int currentTime = getTime(crawVal.getValue(input).get(0));
-                int listPosition = 0;
+	private int getTime(String string)
+	{
+		int hour = Integer.parseInt(string.substring(0, 2).trim());
+		int minute = Integer.parseInt(string.substring(3, 5).trim());
 
-                for (String listItem : listItems)
-                {
-                    if (currentTime < getTime(listItem))
-                    {
-                        break;
-                    }
-                    listPosition++;
-                }
-                listItems.add(listPosition, tramInfos);
-            }
-        }
-        itemAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listItems);
-        listView.setAdapter(itemAdapter);
-    }
+		return hour * 60 + minute;
+	}
 
-    private int getTime(String string)
-    {
-        int hour = Integer.parseInt(string.substring(0, 2).trim());
-        int minute = Integer.parseInt(string.substring(3, 5).trim());
+	@Override
+	public void onCrawlFinish(CrawlValue result)
+	{
+		Root.getInsRoot().setNvvInfos(result);
+		createInterface();
+	}
 
-        return hour * 60 + minute;
-    }
+	public void createThis(int hours, int minutes)
+	{
+		setContentView(R.layout.activity_nvv);
+		TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
+		picker.setIs24HourView(true);
+		picker.setCurrentHour(hours);
 
-    @Override
-    public void onCrawlFinish(CrawlValue result)
-    {
-        Root.getInsRoot().setNvvInfos(result);
-        createInterface();
-    }
+		final NvvStartActivity nvvAvtivity = this;
+		ImageButton searchButton = (ImageButton) findViewById(R.id.buttonSearchTram);
 
-    public void createThis(int hours, int minutes)
-    {
-        setContentView(R.layout.activity_nvv);
-        TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
-        picker.setIs24HourView(true);
-        picker.setCurrentHour(hours);
+		searchButton.setOnClickListener(new View.OnClickListener()
+		{
 
-        final NvvStartActivity nvvAvtivity = this;
-        ImageButton searchButton = (ImageButton) findViewById(R.id.buttonSearchTram);
+			@Override
+			public void onClick(View v)
+			{
+				ListView listView = (ListView) findViewById(R.id.listViewNvv);
+				listView.setAdapter(null);
 
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
+				NvvCrawler nvvCrawl = new NvvCrawler(nvvAvtivity);
+				TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
+				int hours = picker.getCurrentHour();
+				int minutes = picker.getCurrentMinute();
 
-            @Override
-            public void onClick(View v)
-            {
-                ListView listView = (ListView) findViewById(R.id.listViewNvv);
-                listView.setAdapter(null);
+				String time = "";
+				time = setTimer(hours, minutes, time);
 
-                NvvCrawler nvvCrawl = new NvvCrawler(nvvAvtivity);
-                TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
-                int hours = picker.getCurrentHour();
-                int minutes = picker.getCurrentMinute();
+				Object[] parameters = { time };
 
-                String time = "";
-                time = setTimer(hours, minutes, time);
+				nvvCrawl.fetch(parameters);
+			}
+		});
 
-                Object[] parameters = { time };
+		RadioGroup nvvGroup = (RadioGroup) findViewById(R.id.radioNvv);
+		nvvGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+		{
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId)
+			{
+				if (checkedId == R.id.radioWilli)
+				{
+					williCheck = true;
+					hoplaCheck = false;
+					korbaCheck = false;
+				}
+				else if (checkedId == R.id.radioHopla)
+				{
+					williCheck = false;
+					hoplaCheck = true;
+					korbaCheck = false;
+				}
+				else if (checkedId == R.id.radioKorba)
+				{
+					williCheck = false;
+					hoplaCheck = false;
+					korbaCheck = true;
+				}
 
-                nvvCrawl.fetch(parameters);
-            }
-        });
+				ListView listView = (ListView) findViewById(R.id.listViewNvv);
+				listView.setAdapter(null);
 
-        RadioGroup nvvGroup = (RadioGroup) findViewById(R.id.radioNvv);
-        nvvGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
-                if (checkedId == R.id.radioWilli)
-                {
-                    williCheck = true;
-                    hoplaCheck = false;
-                    korbaCheck = false;
-                }
-                else if (checkedId == R.id.radioHopla)
-                {
-                    williCheck = false;
-                    hoplaCheck = true;
-                    korbaCheck = false;
-                }
-                else if (checkedId == R.id.radioKorba)
-                {
-                    williCheck = false;
-                    hoplaCheck = false;
-                    korbaCheck = true;
-                }
+				NvvCrawler nvvCrawl = new NvvCrawler(nvvAvtivity);
+				TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
+				int hours = picker.getCurrentHour();
+				int minutes = picker.getCurrentMinute();
 
-                ListView listView = (ListView) findViewById(R.id.listViewNvv);
-                listView.setAdapter(null);
+				String time = "";
+				time = setTimer(hours, minutes, time);
 
-                NvvCrawler nvvCrawl = new NvvCrawler(nvvAvtivity);
-                TimePicker picker = (TimePicker) findViewById(R.id.timePickerNvv);
-                int hours = picker.getCurrentHour();
-                int minutes = picker.getCurrentMinute();
+				Object[] parameters = { time };
 
-                String time = "";
-                time = setTimer(hours, minutes, time);
+				nvvCrawl.fetch(parameters);
+			}
+		});
+	}
 
-                Object[] parameters = { time };
+	public String setTimer(int hour, int minute, String timer)
+	{
+		if (hour < 10)
+		{
+			timer += "0";
+		}
 
-                nvvCrawl.fetch(parameters);
-            }
-        });
-    }
+		timer += hour + ":";
 
-    public String setTimer(int hour, int minute, String timer)
-    {
-        if (hour < 10)
-        {
-            timer += "0";
-        }
+		if (minute < 10)
+		{
+			timer += "0";
+		}
 
-        timer += hour + ":";
-
-        if (minute < 10)
-        {
-            timer += "0";
-        }
-
-        return timer += minute;
-
-    }
+		return timer += minute;
+	}
 }

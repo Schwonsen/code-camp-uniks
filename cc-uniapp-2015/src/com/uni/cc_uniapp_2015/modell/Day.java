@@ -6,7 +6,7 @@ import java.util.List;
 public class Day {
 	String name;
 	List<Meal> listOfMeals = new ArrayList<Meal>();
-	
+
 	public Day(String name){
 		this.name = name;
 	}

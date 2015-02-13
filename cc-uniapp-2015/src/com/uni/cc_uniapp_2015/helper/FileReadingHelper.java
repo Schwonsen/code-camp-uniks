@@ -6,13 +6,12 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
 public class FileReadingHelper {
 
 	public static String getStringFromFile(String filePath,String format ,Context context) {
 
 		try {
-            filePath=filePath+"."+format;
+			filePath=filePath+"."+format;
 			InputStream inputStream = context.getAssets()
 					.open(filePath);
 
@@ -34,7 +33,6 @@ public class FileReadingHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 }

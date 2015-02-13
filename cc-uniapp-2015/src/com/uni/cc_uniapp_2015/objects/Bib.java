@@ -9,7 +9,7 @@ public class Bib
 	private String fb;
 	private String services;
 	private int key;
-	
+
 	public Bib(int key, String bibName, String street, String tel, String eMail, String fb, String services)
 	{
 		this.bibName = bibName;
@@ -90,6 +90,4 @@ public class Bib
 	{
 		this.services = services;
 	}
-	
-	
 }

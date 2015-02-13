@@ -31,7 +31,6 @@ public class GPSFinder extends Service implements LocationListener {
 	//Updatezeit der Position = 1 sek
 	private static final long MIN_TIME_BW_UPDATES = 100000;
 
-
 	//Definition eines Location Managers
 	protected LocationManager locationManager;
 
@@ -46,19 +45,15 @@ public class GPSFinder extends Service implements LocationListener {
 		try {
 			locationManager = (LocationManager) mContext
 					.getSystemService(LOCATION_SERVICE);
-
 			//Prüfe ob GPS vorhanden
 			isGPSEnabled = locationManager
 					.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
 			//Prüfe ob Netwerk-Modul vorhanden
 			isNetworkEnabled = locationManager
 					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
 			if (!isGPSEnabled && !isNetworkEnabled) {
 				//NICHTS VERFÜGBAR!!!
 			} 
-
 			//Wenn ein Service erreichbar -> Ermittle Position
 			else {
 
@@ -82,7 +77,6 @@ public class GPSFinder extends Service implements LocationListener {
 					}
 				}
 
-
 				//Wenn GPS vorhanden, nutze diese Koordinaten (Latitude und Longlatitude)
 				if (isGPSEnabled) {
 					if (location == null) {
@@ -90,7 +84,6 @@ public class GPSFinder extends Service implements LocationListener {
 								LocationManager.GPS_PROVIDER,
 								MIN_TIME_BW_UPDATES,
 								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-
 
 						if (locationManager != null) {
 							location = locationManager
@@ -130,7 +123,6 @@ public class GPSFinder extends Service implements LocationListener {
 		return longitude;
 	}
 
-
 	//UNGENUTZT!!
 	@Override
 	public void onLocationChanged(Location location) {
@@ -160,5 +152,4 @@ public class GPSFinder extends Service implements LocationListener {
 	public boolean getNetworkIsOn() {
 		return networkIsOn;
 	}
-
 }

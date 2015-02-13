@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Event
 {
-
 	int date;
 	String appointment;
 	String organizer;

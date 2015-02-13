@@ -7,7 +7,6 @@ public class Meal {
 	String priceEmpl;
 	String priceOther;
 	
-	
 	public String getName() {
 		return name;
 	}
@@ -38,8 +37,4 @@ public class Meal {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
-
 }

@@ -6,31 +6,29 @@ import java.util.Set;
 
 public class CrawlValue
 {
+	private HashMap<String, ArrayList<String>> valueMap;
 
-	  private HashMap<String, ArrayList<String>> valueMap;
+	public CrawlValue() {
+		valueMap = new HashMap<String, ArrayList<String>>();
+	}
 
-	    public CrawlValue() {
-	        valueMap = new HashMap<String, ArrayList<String>>();
-	    }
+	public ArrayList<String> getValue(String key)
+	{
+		return this.valueMap.get(key);
+	}
 
-	    public ArrayList<String> getValue(String key)
-	    {
-	        return this.valueMap.get(key);
-	    }
+	public Set<String> getKeys()
+	{
+		return valueMap.keySet();
+	}
 
-	    public Set<String> getKeys()
-	    {
-	        return valueMap.keySet();
-	    }
+	public void appendValue(String key, String value)
+	{
+		ArrayList<String> arrayList = this.valueMap.get(key);
+		if (arrayList == null)
+			arrayList = new ArrayList<String>();
 
-	    public void appendValue(String key, String value)
-	    {
-	        ArrayList<String> arrayList = this.valueMap.get(key);
-	        if (arrayList == null)
-	            arrayList = new ArrayList<String>();
-
-	        arrayList.add(value);
-	        this.valueMap.put(key, arrayList);
-	    }
-
+		arrayList.add(value);
+		this.valueMap.put(key, arrayList);
+	}
 }

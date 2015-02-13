@@ -1,8 +1,5 @@
 package com.uni.cc_uniapp_2015.mensadata;
 
-/**
- * Created by Schrom on 09.02.2015.
- */
 public class MensaMealPrice {
 
     String value;

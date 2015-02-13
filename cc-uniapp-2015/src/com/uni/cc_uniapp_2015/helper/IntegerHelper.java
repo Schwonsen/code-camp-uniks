@@ -1,11 +1,5 @@
 package com.uni.cc_uniapp_2015.helper;
 
-
-
-/**
- * @author jerome.klemm
- * 
- */
 public class IntegerHelper {
 	/**
 	 * @param stringFromWhichYouWantToGetTheIntegerValue

@@ -22,149 +22,149 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class CanteenMenuParser extends AsyncTask<String, Void, String>{
-	 
+
 	Context context;
-    String key;
-    public CanteenMenuParser(Context context,String storingKey){
-        this.context=context;
-        this.key=storingKey;
-    }
+	String key;
+	public CanteenMenuParser(Context context,String storingKey){
+		this.context=context;
+		this.key=storingKey;
+	}
 
-    @Override
-    protected String doInBackground(String... strings) {
-    	Canteen canteen = null;
-    	String result = "";
-        try {
-            Log.d("JSwa", "Connecting to ["+strings[0]+"]");
-            Document doc  = Jsoup.connect(strings[0]).get();
-            Log.d("JSwa", "Connected to ["+strings[0]+"]");
-            canteen = new Canteen();
-            //parse canteen name
-            String canteenName = doc.select("tr.thead").first().getElementsByTag("h1").text();
-            canteen.setName(canteenName != "" ? canteenName : "K10"); //k10 has image as canteen name
+	@Override
+	protected String doInBackground(String... strings) {
+		Canteen canteen = null;
+		String result = "";
+		try {
+			Log.d("JSwa", "Connecting to ["+strings[0]+"]");
+			Document doc  = Jsoup.connect(strings[0]).get();
+			Log.d("JSwa", "Connected to ["+strings[0]+"]");
+			canteen = new Canteen();
+			//parse canteen name
+			String canteenName = doc.select("tr.thead").first().getElementsByTag("h1").text();
+			canteen.setName(canteenName != "" ? canteenName : "K10"); //k10 has image as canteen name
 			// parse meals
-            Elements topicList = doc.select("tr.items_row");    
-            canteen.initDays();
-            List<Day> days = canteen.getListOfDays();
-            for (Element row : topicList) {
-            	String mealName = null;
-            	Elements colls = row.getElementsByTag("td");
-            	int idx = 0;
-            	for (Element coll : colls) {
-            		if (idx == 0) {
-            			mealName = coll.text();
-            		} else {
-            			Meal meal = new Meal();
-            			meal.setName(mealName);
-            			meal.setDescription(coll.text());
-            			days.get(idx - 1).addMeal(meal);
-            		}	
-            		idx++;
-            	}
-            }
-            //parse meal prices
-            Elements priceList = doc.select("tr.price_row");
-            int mealIdx = 0;
-            for (Element row : priceList) {
-            	Elements colls = row.getElementsByTag("td");
-            	int idx = 0;
-            	for (Element coll : colls) {
-            		if (idx > 0) {
-            			Day day = days.get(idx - 1);
-            			Meal meal = day.getListOfMeals().get(mealIdx);
-            			String[] prices = coll.text().replace("€", "").split("/");
-            			String priceStud = "";
-            			String priceEmpl = "";
-            			String priceOther = "";
-            			if (prices.length == 3){
-            				priceStud = prices[0];
-            				priceEmpl = prices[1];
-            				priceOther =  prices[2];
-            			}
-            			meal.setPriceStud(priceStud);
-            			meal.setPriceEmpl(priceEmpl);
-            			meal.setPriceOther(priceOther);
-            		}	
-            		idx++;
-            	}
-                mealIdx++;
-            }
-            result = generateJson(canteen);
-        }
-        catch(Throwable t) {
-        	result = "{'error' : 'no internet connection'}";
-        	Log.e("result", result);
-            t.printStackTrace();
-        }
-        return result;
-    }
+			Elements topicList = doc.select("tr.items_row");    
+			canteen.initDays();
+			List<Day> days = canteen.getListOfDays();
+			for (Element row : topicList) {
+				String mealName = null;
+				Elements colls = row.getElementsByTag("td");
+				int idx = 0;
+				for (Element coll : colls) {
+					if (idx == 0) {
+						mealName = coll.text();
+					} else {
+						Meal meal = new Meal();
+						meal.setName(mealName);
+						meal.setDescription(coll.text());
+						days.get(idx - 1).addMeal(meal);
+					}	
+					idx++;
+				}
+			}
+			//parse meal prices
+			Elements priceList = doc.select("tr.price_row");
+			int mealIdx = 0;
+			for (Element row : priceList) {
+				Elements colls = row.getElementsByTag("td");
+				int idx = 0;
+				for (Element coll : colls) {
+					if (idx > 0) {
+						Day day = days.get(idx - 1);
+						Meal meal = day.getListOfMeals().get(mealIdx);
+						String[] prices = coll.text().replace("€", "").split("/");
+						String priceStud = "";
+						String priceEmpl = "";
+						String priceOther = "";
+						if (prices.length == 3){
+							priceStud = prices[0];
+							priceEmpl = prices[1];
+							priceOther =  prices[2];
+						}
+						meal.setPriceStud(priceStud);
+						meal.setPriceEmpl(priceEmpl);
+						meal.setPriceOther(priceOther);
+					}	
+					idx++;
+				}
+				mealIdx++;
+			}
+			result = generateJson(canteen);
+		}
+		catch(Throwable t) {
+			result = "{'error' : 'no internet connection'}";
+			Log.e("result", result);
+			t.printStackTrace();
+		}
+		return result;
+	}
 
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        if(!s.equals("{'error' : 'no data'}")) {
-            StorageHelper.storeData(context, key, s);
-        }else {
-            Toast.makeText(context,"failed to load data for mensa :"+key,Toast.LENGTH_SHORT).show();
-        }
-        if(StorageHelper.getData(context, key).equals("")) {
-            MensaStartActivity.myFakeTextView.setText(MensaStartActivity.myFakeTextView.getText().toString());
-        }
-    }
-    
-    private String generateJson(Canteen canteen){
-    	String result = "{'error' : 'no data'}";
-    	if (null != canteen){
-    		
-            JSONObject canteenObject = new JSONObject();
-            try {
-            	canteenObject.put("canteenName", canteen.getName());
+	@Override
+	protected void onPostExecute(String s) {
+		super.onPostExecute(s);
+		if(!s.equals("{'error' : 'no data'}")) {
+			StorageHelper.storeData(context, key, s);
+		}else {
+			Toast.makeText(context,"failed to load data for mensa :"+key,Toast.LENGTH_SHORT).show();
+		}
+		if(StorageHelper.getData(context, key).equals("")) {
+			MensaStartActivity.myFakeTextView.setText(MensaStartActivity.myFakeTextView.getText().toString());
+		}
+	}
+
+	private String generateJson(Canteen canteen){
+		String result = "{'error' : 'no data'}";
+		if (null != canteen){
+
+			JSONObject canteenObject = new JSONObject();
+			try {
+				canteenObject.put("canteenName", canteen.getName());
 				JSONArray days = new JSONArray();
 				for (Day day : canteen.getListOfDays()) {		
-					
-	            	JSONObject dayObject = new JSONObject();            	
-	            	JSONArray meals = new JSONArray();
-	            	
-	            	for(Meal meal : day.getListOfMeals()) {
-	            		
-	            		JSONObject mealObject = new JSONObject();
-	            		mealObject.put("nameOfMeal", meal.getName().length() > 0 ? meal.getName() : "");
-	            		mealObject.put("descriptionOfMeal", meal.getDescription().length() > 0 ? meal.getDescription() : "");
-	            		JSONArray prices = new JSONArray();
-	            		
-	            		JSONObject priceStudent = new JSONObject();
-	            		JSONObject priceOther = new JSONObject();
-	            		JSONObject pricEmployee = new JSONObject();
-	            		
-	            		priceStudent.put("type", "student");
-	            		priceStudent.put("price",  meal.getPriceStud().length() > 0 ?  meal.getPriceStud() : "");
-	            		
-	            		pricEmployee.put("type", "employee");
-	            		pricEmployee.put("price", meal.getPriceEmpl().length() > 0 ?  meal.getPriceEmpl() : "");
-	            		
-	            		priceOther.put("type", "other");
-	            		priceOther.put("price", meal.getPriceOther().length() > 0 ?  meal.getPriceOther() : "" );
-	            		
-	            		prices.put(priceStudent);
-	            		prices.put(pricEmployee);
-	            		prices.put(priceOther);
-	            		
-	            		mealObject.put("priceList", prices);
-	            		meals.put(mealObject);
-	            	}
-	            	
-	            	dayObject.put("listOfMeals", meals);
-	            	dayObject.put("nameOfDay", day.getName());
-	            	days.put(dayObject);
-	            }
+
+					JSONObject dayObject = new JSONObject();            	
+					JSONArray meals = new JSONArray();
+
+					for(Meal meal : day.getListOfMeals()) {
+
+						JSONObject mealObject = new JSONObject();
+						mealObject.put("nameOfMeal", meal.getName().length() > 0 ? meal.getName() : "");
+						mealObject.put("descriptionOfMeal", meal.getDescription().length() > 0 ? meal.getDescription() : "");
+						JSONArray prices = new JSONArray();
+
+						JSONObject priceStudent = new JSONObject();
+						JSONObject priceOther = new JSONObject();
+						JSONObject pricEmployee = new JSONObject();
+
+						priceStudent.put("type", "student");
+						priceStudent.put("price",  meal.getPriceStud().length() > 0 ?  meal.getPriceStud() : "");
+
+						pricEmployee.put("type", "employee");
+						pricEmployee.put("price", meal.getPriceEmpl().length() > 0 ?  meal.getPriceEmpl() : "");
+
+						priceOther.put("type", "other");
+						priceOther.put("price", meal.getPriceOther().length() > 0 ?  meal.getPriceOther() : "" );
+
+						prices.put(priceStudent);
+						prices.put(pricEmployee);
+						prices.put(priceOther);
+
+						mealObject.put("priceList", prices);
+						meals.put(mealObject);
+					}
+
+					dayObject.put("listOfMeals", meals);
+					dayObject.put("nameOfDay", day.getName());
+					days.put(dayObject);
+				}
 				canteenObject.put("days", days);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 
-    		result = canteenObject.toString();
-    	}
+			result = canteenObject.toString();
+		}
 
-        return result;
-    }
+		return result;
+	}
 }

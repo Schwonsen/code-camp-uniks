@@ -51,10 +51,8 @@ import animation.ShadowLayout;
 public class MensaStartActivity extends FragmentActivity {
 
     public static final String TAG = "MainActivity";
-
     // Whether the Log Fragment is currently shown
     private boolean mLogShown;
-
     private ColorMatrix colorizerMatrix = new ColorMatrix();
     private BitmapDrawable mBitmapDrawable;
 
@@ -65,7 +63,6 @@ public class MensaStartActivity extends FragmentActivity {
     Button frButton;
 
     public static List<Button> buttonViewList;
-
     public static TextView myFakeTextView;
     public static View clickedView;
 
@@ -86,15 +83,10 @@ public class MensaStartActivity extends FragmentActivity {
 
     private View.OnClickListener myDayOnClickListener = new View.OnClickListener() {
         public void onClick(View view) {
-
             if(myFakeTextView!=null){
                 clickedView=view;
                 myFakeTextView.setText(myFakeTextView.getText().toString());
             }
-
-
-
-
         }
     };
 
@@ -175,8 +167,6 @@ public class MensaStartActivity extends FragmentActivity {
         doButton = (Button) this.findViewById(R.id.do_button);
         frButton = (Button) this.findViewById(R.id.fr_button);
 
-
-
         buttonViewList= new ArrayList<Button>();
         buttonViewList.add(moButton);
         buttonViewList.add(diButton);
@@ -204,16 +194,15 @@ public class MensaStartActivity extends FragmentActivity {
             }
         });
 
-
         mLayout.setVisibility(View.VISIBLE);
         Handler handler2 = new Handler();
         handler2.postDelayed(new Runnable() {
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-            @Override
-            public void run() {
-                mLayout.bringToFront();
-            }} , 100);
-
+        	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+        	@Override
+        	public void run() {
+        		mLayout.bringToFront();
+        	}
+        } , 100);
     }
 
     @Override
@@ -234,12 +223,7 @@ public class MensaStartActivity extends FragmentActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
+    
     /**
      * The enter animation scales the picture in from its previous thumbnail
      * size/location, colorizing it in parallel. In parallel, the background of the
@@ -353,8 +337,6 @@ public class MensaStartActivity extends FragmentActivity {
                         colorizer.start();
                     }
                 });
-
-
     }
 
     @Override
@@ -367,8 +349,6 @@ public class MensaStartActivity extends FragmentActivity {
             }
         });
     }
-
-
 
     @Override
     public void onResume() {
@@ -394,6 +374,4 @@ public class MensaStartActivity extends FragmentActivity {
         ColorMatrixColorFilter colorizerFilter = new ColorMatrixColorFilter(colorizerMatrix);
         mBitmapDrawable.setColorFilter(colorizerFilter);
     }
-
-
 }
