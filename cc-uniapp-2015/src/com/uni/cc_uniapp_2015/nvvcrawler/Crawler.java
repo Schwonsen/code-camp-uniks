@@ -1,5 +1,6 @@
 package com.uni.cc_uniapp_2015.nvvcrawler;
 
+
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -10,8 +11,12 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Created by Maxim on 10.02.2015.
+ */
 public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 {
+
 	protected Crawls listener;
 
 	public Crawler(Crawls listener)
@@ -36,8 +41,7 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 		return this.backgoundCrawl(params, crv);
 	}
 
-	protected abstract CrawlValue backgoundCrawl(Object[] params,
-			CrawlValue crv);
+	protected abstract CrawlValue backgoundCrawl(Object[] params, CrawlValue crv);
 
 	protected void onPostExecute(CrawlValue result)
 	{
@@ -68,8 +72,8 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 			URLConnection connection = website.openConnection();
 			InputStream is = connection.getInputStream();
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"));
+			BufferedReader in = new BufferedReader(new InputStreamReader(is,
+					"iso-8859-1"));
 
 			String inputLine;
 
@@ -77,9 +81,10 @@ public abstract class Crawler extends AsyncTask<Object, Object, CrawlValue>
 				answer.append(inputLine);
 
 			in.close();
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
-			System.out.println("Error: Crawler donï¿½t get html:");
+			System.out.println("Error: Crawler don´t get html:");
 			e.printStackTrace();
 		}
 		return answer.toString();

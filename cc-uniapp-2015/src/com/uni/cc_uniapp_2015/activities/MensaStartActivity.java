@@ -1,6 +1,5 @@
 package com.uni.cc_uniapp_2015.activities;
 
-
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.annotation.TargetApi;
@@ -29,7 +28,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,24 +35,22 @@ import com.uni.cc_uniapp_2015.R;
 import com.uni.cc_uniapp_2015.helper.ImageHelper;
 import com.uni.cc_uniapp_2015.mensadata.MensaDataManager;
 import com.uni.cc_uniapp_2015.tabs.SlidingTabsColorsFragment;
-
-import animation.ShadowLayout;
-
-
 /**
- * A simple launcher activity containing a summary sample description, sample log and a custom
- * {@link android.support.v4.app.Fragment} which can display a view.
- * <p>
- * For devices with displays with a width of 720dp or greater, the sample log is always visible,
- * on other devices it's visibility is controlled by an item on the Action Bar.
- */
-public class MensaStartActivity extends FragmentActivity {
+     * A simple launcher activity containing a summary sample description, sample log and a custom
+     * {@link android.support.v4.app.Fragment} which can display a view.
+     * <p>
+     * For devices with displays with a width of 720dp or greater, the sample log is always visible,
+     * on other devices it's visibility is controlled by an item on the Action Bar.
+     */
+    public class MensaStartActivity extends FragmentActivity {
 
-    public static final String TAG = "MainActivity";
-    // Whether the Log Fragment is currently shown
-    private boolean mLogShown;
-    private ColorMatrix colorizerMatrix = new ColorMatrix();
-    private BitmapDrawable mBitmapDrawable;
+        public static final String TAG = "MainActivity";
+
+        // Whether the Log Fragment is currently shown
+        private boolean mLogShown;
+
+        private ColorMatrix colorizerMatrix = new ColorMatrix();
+        private BitmapDrawable mBitmapDrawable;
 
     Button moButton;
     Button diButton;
@@ -63,6 +59,7 @@ public class MensaStartActivity extends FragmentActivity {
     Button frButton;
 
     public static List<Button> buttonViewList;
+
     public static TextView myFakeTextView;
     public static View clickedView;
 
@@ -76,154 +73,166 @@ public class MensaStartActivity extends FragmentActivity {
     private static final TimeInterpolator sDecelerator = new DecelerateInterpolator();
     private static final TimeInterpolator sAccelerator = new AccelerateInterpolator();
     ColorDrawable mBackground;
-    private ShadowLayout mShadowLayout;
     private RelativeLayout mBackgroundLayout;
     private LinearLayout mLayout;
     private int mOriginalOrientation;
 
     private View.OnClickListener myDayOnClickListener = new View.OnClickListener() {
         public void onClick(View view) {
+
             if(myFakeTextView!=null){
                 clickedView=view;
                 myFakeTextView.setText(myFakeTextView.getText().toString());
             }
+
+
+
+
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.mensa_activity);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.mensa_activity);
 
-        //animation part
-        mImageView = (ImageView) findViewById(R.id.mImageView);
+            //animation part
+            mImageView = (ImageView) findViewById(R.id.mImageView);
 
-        //animation part
-        mTextView = (TextView) findViewById(R.id.mTextView);
+            mTextView = (TextView) findViewById(R.id.mTextView);
 
-        mBackgroundLayout = (RelativeLayout) findViewById(R.id.mybackground);
-        mLayout = (LinearLayout) findViewById(R.id.mlayout);
-        mBackground = new ColorDrawable(Color.parseColor("#ffffff"));
-        mBackgroundLayout.setBackgroundDrawable(mBackground);
-        Bundle bundle = getIntent().getExtras();
-        Bitmap bitmap = ImageHelper.getBitmapFromFolder(this, "drawable",
-                bundle.getString(LauncherActivity.PACKAGENAME + ".imagename"));
-        mBitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-        Log.d("","imageName from bundle: "+bundle.getString(LauncherActivity.PACKAGENAME + ".imagename"));
-        //mImageView.setBackgroundDrawable(ImageHelper.getBitmapDrawableFromFolder(this, "drawable",
-        //       bundle.getString(LauncherActivity.PACKAGENAME + ".imagename")));
-        mImageView.setBackgroundDrawable(mBitmapDrawable);
-        String description = bundle.getString(LauncherActivity.PACKAGENAME + ".description");
-        final int thumbnailTop = bundle.getInt(LauncherActivity.PACKAGENAME + ".top");
-        final int thumbnailLeft = bundle.getInt(LauncherActivity.PACKAGENAME + ".left");
-        final int thumbnailWidth = bundle.getInt(LauncherActivity.PACKAGENAME + ".width");
-        final int thumbnailHeight = bundle.getInt(LauncherActivity.PACKAGENAME + ".height");
-        mOriginalOrientation = bundle.getInt(LauncherActivity.PACKAGENAME + ".orientation");
+            mBackgroundLayout = (RelativeLayout) findViewById(R.id.mybackground);
+            mLayout = (LinearLayout) findViewById(R.id.mlayout);
+            mBackground = new ColorDrawable(Color.parseColor("#ffffff"));
+            mBackgroundLayout.setBackgroundDrawable(mBackground);
+            Bundle bundle = getIntent().getExtras();
+            Bitmap bitmap = ImageHelper.getBitmapFromFolder(this, "drawable",
+                    bundle.getString(LauncherActivity.PACKAGENAME + ".imagename"));
+            mBitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+            Log.d("","imageName from bundle: "+bundle.getString(LauncherActivity.PACKAGENAME + ".imagename"));
+            //mImageView.setBackgroundDrawable(ImageHelper.getBitmapDrawableFromFolder(this, "drawable",
+             //       bundle.getString(LauncherActivity.PACKAGENAME + ".imagename")));
+            mImageView.setBackgroundDrawable(mBitmapDrawable);
+            String description = bundle.getString(LauncherActivity.PACKAGENAME + ".description");
+            final int thumbnailTop = bundle.getInt(LauncherActivity.PACKAGENAME + ".top");
+            final int thumbnailLeft = bundle.getInt(LauncherActivity.PACKAGENAME + ".left");
+            final int thumbnailWidth = bundle.getInt(LauncherActivity.PACKAGENAME + ".width");
+            final int thumbnailHeight = bundle.getInt(LauncherActivity.PACKAGENAME + ".height");
+            mOriginalOrientation = bundle.getInt(LauncherActivity.PACKAGENAME + ".orientation");
 
-        mShadowLayout = (ShadowLayout) findViewById(R.id.shadowLayout);
 
-        if (savedInstanceState == null) {
-            ViewTreeObserver observer = mImageView.getViewTreeObserver();
-            observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 
+            if (savedInstanceState == null) {
+                ViewTreeObserver observer = mImageView.getViewTreeObserver();
+                observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+
+                    @Override
+                    public boolean onPreDraw() {
+                        mImageView.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                        // Figure out where the thumbnail and full size versions are, relative
+                        // to the screen and each other
+                        int[] screenLocation = new int[2];
+                        mImageView.getLocationOnScreen(screenLocation);
+                        mLeftDelta = thumbnailLeft - screenLocation[0];
+                        mTopDelta = thumbnailTop - screenLocation[1];
+
+                        // Scale factors to make the large version the same size as the thumbnail
+                        mWidthScale = (float) thumbnailWidth / mImageView.getWidth();
+                        mHeightScale = (float) thumbnailHeight / mImageView.getHeight();
+
+                        runEnterAnimation();
+                    //AnimationHelper.runEnterAnimation(MensaStartActivity.this, mImageView, ANIM_DURATION, 1, mWidthScale, mHeightScale, mLeftDelta, mTopDelta, mBackgroundLayout);
+
+                        return true;
+                    }
+                });
+            }
+            //end animation part
+
+            myFakeTextView = new TextView(this);
+
+            MensaDataManager.initialize(this);
+            MensaDataManager.crawlData(this);
+            if (savedInstanceState == null) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                SlidingTabsColorsFragment fragment = new SlidingTabsColorsFragment();
+                transaction.replace(R.id.sample_content_fragment, fragment);
+                transaction.commit();
+            }
+
+           // Toast.makeText(this,"aaa",Toast.LENGTH_SHORT).show();
+            moButton = (Button) this.findViewById(R.id.mo_button);
+            diButton = (Button) this.findViewById(R.id.di_button);
+            miButton = (Button) this.findViewById(R.id.mi_button);
+            doButton = (Button) this.findViewById(R.id.do_button);
+            frButton = (Button) this.findViewById(R.id.fr_button);
+
+
+
+            buttonViewList= new ArrayList<Button>();
+            buttonViewList.add(moButton);
+            buttonViewList.add(diButton);
+            buttonViewList.add(miButton);
+            buttonViewList.add(doButton);
+            buttonViewList.add(frButton);
+
+            for (Button button : buttonViewList){
+                button.setOnClickListener(myDayOnClickListener);
+            }
+            clickedView = moButton;
+            moButton.post(new Runnable(){
                 @Override
-                public boolean onPreDraw() {
-                    mImageView.getViewTreeObserver().removeOnPreDrawListener(this);
-
-                    // Figure out where the thumbnail and full size versions are, relative
-                    // to the screen and each other
-                    int[] screenLocation = new int[2];
-                    mImageView.getLocationOnScreen(screenLocation);
-                    mLeftDelta = thumbnailLeft - screenLocation[0];
-                    mTopDelta = thumbnailTop - screenLocation[1];
-
-                    // Scale factors to make the large version the same size as the thumbnail
-                    mWidthScale = (float) thumbnailWidth / mImageView.getWidth();
-                    mHeightScale = (float) thumbnailHeight / mImageView.getHeight();
-
-                    runEnterAnimation();
-
-                    return true;
+                public void run() {
+                    mLayout.setVisibility(View.VISIBLE);
+                    Animation animationFadeIn = AnimationUtils.loadAnimation(MensaStartActivity.this, R.anim.fadein);
+                    mLayout.startAnimation(animationFadeIn);
+                    Handler handler2 = new Handler();
+                    handler2.postDelayed(new Runnable() {
+                        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+                        @Override
+                        public void run() {
+                            moButton.performClick();
+                        }} , 100);
                 }
             });
-        }
-        //end animation part
 
-        myFakeTextView = new TextView(this);
 
-        MensaDataManager.initialize(this);
-        MensaDataManager.crawlData(this);
-        if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            SlidingTabsColorsFragment fragment = new SlidingTabsColorsFragment();
-            transaction.replace(R.id.sample_content_fragment, fragment);
-            transaction.commit();
-        }
-
-        // Toast.makeText(this,"aaa",Toast.LENGTH_SHORT).show();
-        moButton = (Button) this.findViewById(R.id.mo_button);
-        diButton = (Button) this.findViewById(R.id.di_button);
-        miButton = (Button) this.findViewById(R.id.mi_button);
-        doButton = (Button) this.findViewById(R.id.do_button);
-        frButton = (Button) this.findViewById(R.id.fr_button);
-
-        buttonViewList= new ArrayList<Button>();
-        buttonViewList.add(moButton);
-        buttonViewList.add(diButton);
-        buttonViewList.add(miButton);
-        buttonViewList.add(doButton);
-        buttonViewList.add(frButton);
-
-        for (Button button : buttonViewList){
-            button.setOnClickListener(myDayOnClickListener);
-        }
-        clickedView = moButton;
-        moButton.post(new Runnable(){
-            @Override
-            public void run() {
                 mLayout.setVisibility(View.VISIBLE);
-                Animation animationFadeIn = AnimationUtils.loadAnimation(MensaStartActivity.this, R.anim.fadein);
-                mLayout.startAnimation(animationFadeIn);
                 Handler handler2 = new Handler();
                 handler2.postDelayed(new Runnable() {
                     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
                     @Override
                     public void run() {
-                        moButton.performClick();
+                        mLayout.bringToFront();
                     }} , 100);
-            }
-        });
-
-        mLayout.setVisibility(View.VISIBLE);
-        Handler handler2 = new Handler();
-        handler2.postDelayed(new Runnable() {
-        	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-        	@Override
-        	public void run() {
-        		mLayout.bringToFront();
-        	}
-        } , 100);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
 
         }
-        return super.onOptionsItemSelected(item);
-    }
-    
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareOptionsMenu(Menu menu) {
+            return super.onPrepareOptionsMenu(menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch(item.getItemId()) {
+
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+
+
+
+
+
     /**
      * The enter animation scales the picture in from its previous thumbnail
      * size/location, colorizing it in parallel. In parallel, the background of the
@@ -276,10 +285,7 @@ public class MensaStartActivity extends FragmentActivity {
         colorizer.setDuration(duration);
         colorizer.start();
 
-        // Animate a drop-shadow of the image
-        ObjectAnimator shadowAnim = ObjectAnimator.ofFloat(mShadowLayout, "shadowDepth", 0, 1);
-        shadowAnim.setDuration(duration);
-        shadowAnim.start();
+
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -322,11 +328,6 @@ public class MensaStartActivity extends FragmentActivity {
                         bgAnim.setDuration(duration);
                         bgAnim.start();
 
-                        // Animate the shadow of the image
-                        ObjectAnimator shadowAnim = ObjectAnimator.ofFloat(mShadowLayout,
-                                "shadowDepth", 1, 0);
-                        shadowAnim.setDuration(duration);
-                        shadowAnim.start();
 
                         // Animate a color filter to take the image back to grayscale,
                         // in parallel with the image scaling and moving into place.
@@ -337,6 +338,8 @@ public class MensaStartActivity extends FragmentActivity {
                         colorizer.start();
                     }
                 });
+
+
     }
 
     @Override
@@ -350,13 +353,15 @@ public class MensaStartActivity extends FragmentActivity {
         });
     }
 
+
+
     @Override
     public void onResume() {
         super.onResume();
         try{
-            if(myFakeTextView!=null){
-                myFakeTextView.setText(myFakeTextView.getText().toString());
-            }}catch (Exception e){
+        if(myFakeTextView!=null){
+            myFakeTextView.setText(myFakeTextView.getText().toString());
+        }}catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -374,4 +379,6 @@ public class MensaStartActivity extends FragmentActivity {
         ColorMatrixColorFilter colorizerFilter = new ColorMatrixColorFilter(colorizerMatrix);
         mBitmapDrawable.setColorFilter(colorizerFilter);
     }
+
+
 }

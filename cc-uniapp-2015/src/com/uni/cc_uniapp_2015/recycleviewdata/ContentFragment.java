@@ -50,10 +50,11 @@ import com.uni.cc_uniapp_2015.mensadata.MensaMealPrice;
 import com.uni.cc_uniapp_2015.mensadata.MensaWeekPlan;
 
 /**
- * Simple Fragment used to display some meaningful content for each page in the sample's
- * {@link android.support.v4.view.ViewPager}.
+ * Simple Fragment used to display some meaningful content for each page in the
+ * sample's {@link android.support.v4.view.ViewPager}.
  */
-public class ContentFragment extends Fragment {
+public class ContentFragment extends Fragment
+{
 
 	public static final String TAG = "ContentFragment";
 
@@ -67,12 +68,14 @@ public class ContentFragment extends Fragment {
 	View rootView;
 
 	String mensaName;
+
 	/**
-	 * @return a new instance of {@link ContentFragment}, adding the parameters into a bundle and
-	 * setting them as arguments.
+	 * @return a new instance of {@link ContentFragment}, adding the parameters
+	 *         into a bundle and setting them as arguments.
 	 */
-	public static ContentFragment newInstance(CharSequence title, int indicatorColor,
-			int dividerColor) {
+	public static ContentFragment newInstance(CharSequence title,
+			int indicatorColor, int dividerColor)
+	{
 		Bundle bundle = new Bundle();
 		bundle.putCharSequence(KEY_TITLE, title);
 		bundle.putInt(KEY_INDICATOR_COLOR, indicatorColor);
@@ -84,55 +87,71 @@ public class ContentFragment extends Fragment {
 		return fragment;
 	}
 
-	public void updateDay(View view) {
-		//Toast.makeText(getActivity()," teest ",Toast.LENGTH_SHORT).show();
-		for (Button button : MensaStartActivity.buttonViewList) {
+	public void updateDay(View view)
+	{
+		// Toast.makeText(getActivity()," teest ",Toast.LENGTH_SHORT).show();
+		for (Button button : MensaStartActivity.buttonViewList)
+		{
 			button.setTextColor(Color.parseColor("#222222"));
 			button.setBackgroundResource(R.drawable.daybackgroundtab);
 		}
 		Button myButton = (Button) view;
-		//myButton.setTextColor(Color.parseColor("#229922"));
+		// myButton.setTextColor(Color.parseColor("#229922"));
 		myButton.setTextColor(Color.parseColor("#ffffff"));
 		myButton.setBackgroundResource(R.drawable.daybackground_clickedtab);
 		sortlist(view);
 		String dayNumber = view.getTag().toString();
 		initializeFeedItemList(mensaName, dayNumber);
 		Handler handler1 = new Handler();
-		handler1.postDelayed(new Runnable() {
+		handler1.postDelayed(new Runnable()
+		{
 			@Override
-			public void run() {
+			public void run()
+			{
 				adapter.notifyDataSetChanged();
 			}
-		} , 300);
+		}, 300);
+
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+			Bundle savedInstanceState)
+	{
 
 		rootView = inflater.inflate(R.layout.pager_item, container, false);
 
 		Bundle args = getArguments();
 
-		mensaName = (String)args.getCharSequence(KEY_TITLE);
-		initializeFeedItemList(mensaName,"0");
-		//initialize receiverView
-		mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+		mensaName = (String) args.getCharSequence(KEY_TITLE);
+		initializeFeedItemList(mensaName, "0");
+		// initialize receiverView
+		mRecyclerView = (RecyclerView) rootView
+				.findViewById(R.id.recycler_view);
 
-		MensaStartActivity.myFakeTextView.addTextChangedListener(new TextWatcher() {
-			public void afterTextChanged(Editable s) {
-				updateDay(MensaStartActivity.clickedView);
-			}
+		MensaStartActivity.myFakeTextView
+				.addTextChangedListener(new TextWatcher()
+				{
+					public void afterTextChanged(Editable s)
+					{
+						updateDay(MensaStartActivity.clickedView);
+					}
 
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after)
+					{
+					}
 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-			}
-		});
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count)
+					{
+					}
+				});
 
-		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-		Log.d(TAG, "TEST2: "+layoutManager+" "+getActivity()+" "+feedItemList.size());
+		LinearLayoutManager layoutManager = new LinearLayoutManager(
+				getActivity());
+		Log.d(TAG, "TEST2: " + layoutManager + " " + getActivity() + " "
+				+ feedItemList.size());
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 		adapter = new MyRecyclerAdapter(getActivity(), feedItemList);
 		mRecyclerView.setAdapter(adapter);
@@ -141,78 +160,114 @@ public class ContentFragment extends Fragment {
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);	
+	public void onViewCreated(View view, Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+
+		Bundle args = getArguments();
+
+		if (args != null)
+		{
+			// TextView title = (TextView) view.findViewById(R.id.item_title);
+			// title.setText("Title: " + args.getCharSequence(KEY_TITLE));
+
+		}
 	}
 
-	public void sortlist(View view){
+	public void sortlist(View view)
+	{
 
 		Random rng = new Random(); // Ideally just create one instance globally
 		// Note: use LinkedHashSet to maintain insertion order
 		Set<Integer> generated = new LinkedHashSet<Integer>();
-		int s=0;
-		while (generated.size() < feedItemList.size()&&s<100)//i<100 for preventing not terminating
+		int s = 0;
+		while (generated.size() < feedItemList.size() && s < 100)// i<100 for
+																	// preventing
+																	// not
+																	// terminating
 		{
-			s=s+1;
-			Integer next = rng.nextInt(feedItemList.size()) ;
-			// As we're adding to a set, this will automatically do a containment check
+			s = s + 1;
+			Integer next = rng.nextInt(feedItemList.size());
+			// As we're adding to a set, this will automatically do a
+			// containment check
 			generated.add(next);
 		}
 
 		List<MealItem> feedItemListSave = new ArrayList<MealItem>();
 		feedItemListSave.addAll(feedItemList);
 		feedItemList.clear();
-		for(int newlinenumber : generated){
+		for (int newlinenumber : generated)
+		{
 			feedItemList.add(feedItemListSave.get(newlinenumber));
 		}
 		final List<Integer> generatedList = new ArrayList<Integer>();
 		generatedList.addAll(generated);
 		final int end = feedItemList.size() - 1;
-		for (int i = 0; i < end; i++) {
+		for (int i = 0; i < end; i++)
+		{
 			final int k = i;
-			if (i!=generatedList.get(i)){
+			if (i != generatedList.get(i))
+			{
 				adapter.notifyItemMoved(i, generatedList.get(i));
 				Handler handler1 = new Handler();
-				handler1.postDelayed(new Runnable() {
+				handler1.postDelayed(new Runnable()
+				{
 					@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 					@Override
-					public void run() {
+					public void run()
+					{
 						View myView = (View) mRecyclerView.getChildAt(k);
-						if (myView!=null) {
-							Log.d(TAG, "getting view " + myView + " for position " + k);
-							ObjectAnimator animY = ObjectAnimator.ofFloat(myView, "translationY", -60f, 0f);
-							animY.setDuration(1000);//1sec
+						if (myView != null)
+						{
+							Log.d(TAG, "getting view " + myView
+									+ " for position " + k);
+							ObjectAnimator animY = ObjectAnimator.ofFloat(
+									myView, "translationY", -60f, 0f);
+							animY.setDuration(1000);// 1sec
 							animY.setInterpolator(new BounceInterpolator());
 							animY.setRepeatCount(0);
 							animY.start();
 						}
-					}} , 70*i);}
+					}
+				}, 70 * i);
+			}
 		}
 		Handler handler2 = new Handler();
-		handler2.postDelayed(new Runnable() {
+		handler2.postDelayed(new Runnable()
+		{
 			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
-			public void run() {
+			public void run()
+			{
 				mRecyclerView.scrollToPosition(0);
 			}
-		} , 200);
+		}, 200);
 	}
 
-	public void initializeFeedItemList(String mensaName,String dayNumber){
-		if (null == feedItemList) {
+	public void initializeFeedItemList(String mensaName, String dayNumber)
+	{
+		if (null == feedItemList)
+		{
 			feedItemList = new ArrayList<MealItem>();
 		}
 		feedItemList.clear();
-		try{
-			Log.d(TAG,"MENSA NAME: "+mensaName);
-			MensaWeekPlan myMensaWeekPlan = MensaDataManager.mensaWeekPlanMap.get(mensaName);
+		try
+		{
+			Log.d(TAG, "MENSA NAME: " + mensaName);
+			MensaWeekPlan myMensaWeekPlan = MensaDataManager.mensaWeekPlanMap
+					.get(mensaName);
 
-			Log.d(TAG,"MENSA NAME: "+myMensaWeekPlan);
-			List<MensaDay> myListOfMensaDays = myMensaWeekPlan.getListOfMensaDays();
-			MensaDay mySingleMensaDay = myListOfMensaDays.get(IntegerHelper.getIntegerOf(dayNumber));
-			List<MensaMeal> mySingleMensaMealList = mySingleMensaDay.getListOfMensaMeals();
-			for (MensaMeal singleMensaMeal: mySingleMensaMealList) {
-				List<MensaMealPrice> listOfMensaMealPrices = singleMensaMeal.getListOfPrices();
+			Log.d(TAG, "MENSA NAME: " + myMensaWeekPlan);
+			List<MensaDay> myListOfMensaDays = myMensaWeekPlan
+					.getListOfMensaDays();
+			MensaDay mySingleMensaDay = myListOfMensaDays.get(IntegerHelper
+					.getIntegerOf(dayNumber));
+			List<MensaMeal> mySingleMensaMealList = mySingleMensaDay
+					.getListOfMensaMeals();
+			for (MensaMeal singleMensaMeal : mySingleMensaMealList)
+			{
+				List<MensaMealPrice> listOfMensaMealPrices = singleMensaMeal
+						.getListOfPrices();
 				MealItem item = new MealItem();
 				item.setNameOfMeal(singleMensaMeal.getName());
 				item.setDescriptionOfMeal(singleMensaMeal.getDescription());
@@ -221,7 +276,9 @@ public class ContentFragment extends Fragment {
 				item.setOtherPrice(listOfMensaMealPrices.get(2).getValue());
 				feedItemList.add(item);
 			}
-		}catch(Exception e){
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}

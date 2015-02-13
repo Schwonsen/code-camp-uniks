@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * Created by Maxim on 10.02.2015.
+ */
 public class CrawlValue
 {
 	private HashMap<String, ArrayList<String>> valueMap;
 
-	public CrawlValue() {
+	public CrawlValue()
+	{
 		valueMap = new HashMap<String, ArrayList<String>>();
 	}
 

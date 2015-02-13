@@ -1,5 +1,8 @@
 package com.uni.cc_uniapp_2015.nvvcrawler;
 
+/**
+ * Created by Maxim on 10.02.2015.
+ */
 public class Root
 {
 	private static Root instance = null;
@@ -13,9 +16,6 @@ public class Root
 		return instance;
 	}
 
-	/**
-	 * NVV Values
-	 */
 	private CrawlValue nvvInfos;
 
 	public CrawlValue getNvvInfos()
@@ -27,4 +27,5 @@ public class Root
 	{
 		this.nvvInfos = nvvInfo;
 	}
+
 }

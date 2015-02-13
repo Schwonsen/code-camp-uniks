@@ -1,4 +1,4 @@
-package com.uni.cc_uniapp_2015.util;
+package com.uni.cc_uniapp_2015.modell;
 
 import java.util.List;
 
@@ -12,86 +12,104 @@ import org.jsoup.select.Elements;
 
 import com.uni.cc_uniapp_2015.activities.MensaStartActivity;
 import com.uni.cc_uniapp_2015.helper.StorageHelper;
-import com.uni.cc_uniapp_2015.modell.Canteen;
-import com.uni.cc_uniapp_2015.modell.Day;
-import com.uni.cc_uniapp_2015.modell.Meal;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-public class CanteenMenuParser extends AsyncTask<String, Void, String>{
+public class CanteenMenuParserTask extends AsyncTask<String, Void, String>
+{
 
 	Context context;
 	String key;
-	public CanteenMenuParser(Context context,String storingKey){
-		this.context=context;
-		this.key=storingKey;
+
+	public CanteenMenuParserTask(Context context, String storingKey)
+	{
+		this.context = context;
+		this.key = storingKey;
 	}
 
 	@Override
-	protected String doInBackground(String... strings) {
+	protected String doInBackground(String... strings)
+	{
 		Canteen canteen = null;
 		String result = "";
-		try {
-			Log.d("JSwa", "Connecting to ["+strings[0]+"]");
-			Document doc  = Jsoup.connect(strings[0]).get();
-			Log.d("JSwa", "Connected to ["+strings[0]+"]");
+		try
+		{
+			Log.d("JSwa", "Connecting to [" + strings[0] + "]");
+			Document doc = Jsoup.connect(strings[0]).get();
+			Log.d("JSwa", "Connected to [" + strings[0] + "]");
 			canteen = new Canteen();
-			//parse canteen name
-			String canteenName = doc.select("tr.thead").first().getElementsByTag("h1").text();
-			canteen.setName(canteenName != "" ? canteenName : "K10"); //k10 has image as canteen name
+			// parse canteen name
+			String canteenName = doc.select("tr.thead").first()
+					.getElementsByTag("h1").text();
+			canteen.setName(canteenName != "" ? canteenName : "K10"); // k10 has
+																		// image
+																		// as
+																		// canteen
+																		// name
 			// parse meals
-			Elements topicList = doc.select("tr.items_row");    
+			Elements topicList = doc.select("tr.items_row");
 			canteen.initDays();
 			List<Day> days = canteen.getListOfDays();
-			for (Element row : topicList) {
+			for (Element row : topicList)
+			{
 				String mealName = null;
 				Elements colls = row.getElementsByTag("td");
 				int idx = 0;
-				for (Element coll : colls) {
-					if (idx == 0) {
+				for (Element coll : colls)
+				{
+					if (idx == 0)
+					{
 						mealName = coll.text();
-					} else {
+					}
+					else
+					{
 						Meal meal = new Meal();
 						meal.setName(mealName);
 						meal.setDescription(coll.text());
 						days.get(idx - 1).addMeal(meal);
-					}	
+					}
 					idx++;
 				}
 			}
-			//parse meal prices
+			// parse meal prices
 			Elements priceList = doc.select("tr.price_row");
 			int mealIdx = 0;
-			for (Element row : priceList) {
+			for (Element row : priceList)
+			{
 				Elements colls = row.getElementsByTag("td");
 				int idx = 0;
-				for (Element coll : colls) {
-					if (idx > 0) {
+				for (Element coll : colls)
+				{
+					if (idx > 0)
+					{
 						Day day = days.get(idx - 1);
 						Meal meal = day.getListOfMeals().get(mealIdx);
-						String[] prices = coll.text().replace("â‚¬", "").split("/");
+						String[] prices = coll.text().replace("€", "")
+								.split("/");
 						String priceStud = "";
 						String priceEmpl = "";
 						String priceOther = "";
-						if (prices.length == 3){
+						if (prices.length == 3)
+						{
 							priceStud = prices[0];
 							priceEmpl = prices[1];
-							priceOther =  prices[2];
+							priceOther = prices[2];
 						}
 						meal.setPriceStud(priceStud);
 						meal.setPriceEmpl(priceEmpl);
 						meal.setPriceOther(priceOther);
-					}	
+					}
 					idx++;
 				}
 				mealIdx++;
 			}
 			result = generateJson(canteen);
 		}
-		catch(Throwable t) {
+		catch (Throwable t)
+		{
 			result = "{'error' : 'no internet connection'}";
 			Log.e("result", result);
 			t.printStackTrace();
@@ -100,36 +118,54 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 	}
 
 	@Override
-	protected void onPostExecute(String s) {
+	protected void onPostExecute(String s)
+	{
 		super.onPostExecute(s);
-		if(!s.equals("{'error' : 'no data'}")) {
+		if (!s.equals("{'error' : 'no data'}"))
+		{
 			StorageHelper.storeData(context, key, s);
-		}else {
-			Toast.makeText(context,"failed to load data for mensa :"+key,Toast.LENGTH_SHORT).show();
 		}
-		if(StorageHelper.getData(context, key).equals("")) {
-			MensaStartActivity.myFakeTextView.setText(MensaStartActivity.myFakeTextView.getText().toString());
+		else
+		{
+			Toast.makeText(context, "failed to load data for mensa :" + key,
+					Toast.LENGTH_SHORT).show();
+		}
+		if (StorageHelper.getData(context, key).equals(""))
+		{
+			MensaStartActivity.myFakeTextView
+					.setText(MensaStartActivity.myFakeTextView.getText()
+							.toString());
 		}
 	}
 
-	private String generateJson(Canteen canteen){
+	private String generateJson(Canteen canteen)
+	{
 		String result = "{'error' : 'no data'}";
-		if (null != canteen){
+		if (null != canteen)
+		{
 
 			JSONObject canteenObject = new JSONObject();
-			try {
+			try
+			{
 				canteenObject.put("canteenName", canteen.getName());
 				JSONArray days = new JSONArray();
-				for (Day day : canteen.getListOfDays()) {		
+				for (Day day : canteen.getListOfDays())
+				{
 
-					JSONObject dayObject = new JSONObject();            	
+					JSONObject dayObject = new JSONObject();
 					JSONArray meals = new JSONArray();
 
-					for(Meal meal : day.getListOfMeals()) {
+					for (Meal meal : day.getListOfMeals())
+					{
 
 						JSONObject mealObject = new JSONObject();
-						mealObject.put("nameOfMeal", meal.getName().length() > 0 ? meal.getName() : "");
-						mealObject.put("descriptionOfMeal", meal.getDescription().length() > 0 ? meal.getDescription() : "");
+						mealObject.put("nameOfMeal",
+								meal.getName().length() > 0 ? meal.getName()
+										: "");
+						mealObject.put(
+								"descriptionOfMeal",
+								meal.getDescription().length() > 0 ? meal
+										.getDescription() : "");
 						JSONArray prices = new JSONArray();
 
 						JSONObject priceStudent = new JSONObject();
@@ -137,13 +173,22 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 						JSONObject pricEmployee = new JSONObject();
 
 						priceStudent.put("type", "student");
-						priceStudent.put("price",  meal.getPriceStud().length() > 0 ?  meal.getPriceStud() : "");
+						priceStudent.put(
+								"price",
+								meal.getPriceStud().length() > 0 ? meal
+										.getPriceStud() : "");
 
 						pricEmployee.put("type", "employee");
-						pricEmployee.put("price", meal.getPriceEmpl().length() > 0 ?  meal.getPriceEmpl() : "");
+						pricEmployee.put(
+								"price",
+								meal.getPriceEmpl().length() > 0 ? meal
+										.getPriceEmpl() : "");
 
 						priceOther.put("type", "other");
-						priceOther.put("price", meal.getPriceOther().length() > 0 ?  meal.getPriceOther() : "" );
+						priceOther.put(
+								"price",
+								meal.getPriceOther().length() > 0 ? meal
+										.getPriceOther() : "");
 
 						prices.put(priceStudent);
 						prices.put(pricEmployee);
@@ -158,7 +203,9 @@ public class CanteenMenuParser extends AsyncTask<String, Void, String>{
 					days.put(dayObject);
 				}
 				canteenObject.put("days", days);
-			} catch (JSONException e) {
+			}
+			catch (JSONException e)
+			{
 				e.printStackTrace();
 			}
 

@@ -1,5 +1,10 @@
 package com.uni.cc_uniapp_2015.nvvcrawler;
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Matcher;
+
+
 import java.util.regex.Matcher;
 
 import com.uni.cc_uniapp_2015.activities.NvvStartActivity;
@@ -9,7 +14,7 @@ public class NvvCrawler extends Crawler
 	private static final String PRE_URL = "http://auskunft.nvv.de/nvv/bin/jp/stboard.exe/"
 			+ "dn?L=vs_rmv.vs_nvv&showStBoard=yes&input=";
 
-	// crawler URL for "Murhardstra�e Uni....."
+	// crawler URL for "Murhardstraße Uni....."
 	private static final String ID_URL_MURHARD = "2200057&time=";
 
 	// crawler URL for "HoPla"
@@ -37,8 +42,8 @@ public class NvvCrawler extends Crawler
 
 			checkedUrl = checkUrl(checkedUrl);
 
-			Matcher matcher = getUrlMatcher(PRE_URL + checkedUrl + time + POST_URL,
-					regex);
+			Matcher matcher = getUrlMatcher(PRE_URL + checkedUrl + time
+					+ POST_URL, regex);
 
 			while (matcher.find())
 			{
@@ -79,7 +84,8 @@ public class NvvCrawler extends Crawler
 		catch (Exception e)
 		{
 			e.printStackTrace();
-		};
+		}
+		;
 		return null;
 	}
 
@@ -99,4 +105,5 @@ public class NvvCrawler extends Crawler
 		}
 		return checkedUrl;
 	}
+
 }

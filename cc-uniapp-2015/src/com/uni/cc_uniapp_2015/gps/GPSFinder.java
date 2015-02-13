@@ -9,66 +9,79 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 
-public class GPSFinder extends Service implements LocationListener {
+public class GPSFinder extends Service implements LocationListener
+{
 
 	private final Context mContext;
 
-	//PrÃ¼fung auf "Vorhandensein" der Module
+	// Prüfung auf "Vorhandensein" der Module
 	boolean isGPSEnabled = false;
 	boolean isNetworkEnabled = false;
 
-	//PrÃ¼fung auf VerfÃ¼gbarkeit
-	boolean gpsIsOn = false;
-	boolean networkIsOn = false;
+	// Prüfung auf Verfügbarkeit
+	public boolean gpsIsOn = false;
+	public boolean networkIsOn = false;
 
-	Location location; 
-	double latitude; 
-	double longitude; 
+	Location location;
+	double latitude;
+	double longitude;
 
-	//Minimale Strecke, in der Ã„nderungen erkannt werden = 10 meter
-	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; 
+	// Minimale Strecke, in der Änderungen erkannt werden = 10 meter
+	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
 
-	//Updatezeit der Position = 1 sek
+	// Updatezeit der Position = 1 sek
 	private static final long MIN_TIME_BW_UPDATES = 100000;
 
-	//Definition eines Location Managers
+	// Definition eines Location Managers
 	protected LocationManager locationManager;
 
-	public GPSFinder(Context context) {
+	public GPSFinder(Context context)
+	{
 		this.mContext = context;
 		getLocation();
 	}
 
-	public Location getLocation() {
+	public Location getLocation()
+	{
 		networkIsOn = false;
 		gpsIsOn = false;
-		try {
+		try
+		{
 			locationManager = (LocationManager) mContext
 					.getSystemService(LOCATION_SERVICE);
-			//PrÃ¼fe ob GPS vorhanden
+
+			// Prüfe ob GPS vorhanden
 			isGPSEnabled = locationManager
 					.isProviderEnabled(LocationManager.GPS_PROVIDER);
-			//PrÃ¼fe ob Netwerk-Modul vorhanden
+
+			// Prüfe ob Netwerk-Modul vorhanden
 			isNetworkEnabled = locationManager
 					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-			if (!isGPSEnabled && !isNetworkEnabled) {
-				//NICHTS VERFÃœGBAR!!!
-			} 
-			//Wenn ein Service erreichbar -> Ermittle Position
-			else {
 
-				//Versuche zunÃ¤chst Netwerk-Koordinaten
-				if (isNetworkEnabled) {
+			if (!isGPSEnabled && !isNetworkEnabled)
+			{
+				// NICHTS VERFÜGBAR!!!
+			}
+
+			// Wenn ein Service erreichbar -> Ermittle Position
+			else
+			{
+
+				// Versuche zunächst Netwerk-Koordinaten
+				if (isNetworkEnabled)
+				{
 					locationManager.requestLocationUpdates(
 							LocationManager.NETWORK_PROVIDER,
 							MIN_TIME_BW_UPDATES,
 							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 
-					if (locationManager != null) {
+					if (locationManager != null)
+					{
 						location = locationManager
 								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-						if (location != null) {
+						if (location != null)
+						{
 							latitude = location.getLatitude();
 							longitude = location.getLongitude();
 							networkIsOn = true;
@@ -77,19 +90,24 @@ public class GPSFinder extends Service implements LocationListener {
 					}
 				}
 
-				//Wenn GPS vorhanden, nutze diese Koordinaten (Latitude und Longlatitude)
-				if (isGPSEnabled) {
-					if (location == null) {
+				// Wenn GPS vorhanden, nutze diese Koordinaten (Latitude und
+				// Longlatitude)
+				if (isGPSEnabled)
+				{
+					if (location == null)
+					{
 						locationManager.requestLocationUpdates(
 								LocationManager.GPS_PROVIDER,
 								MIN_TIME_BW_UPDATES,
 								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 
-						if (locationManager != null) {
+						if (locationManager != null)
+						{
 							location = locationManager
 									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-							if (location != null) {
+							if (location != null)
+							{
 								latitude = location.getLatitude();
 								longitude = location.getLongitude();
 								gpsIsOn = true;
@@ -100,56 +118,70 @@ public class GPSFinder extends Service implements LocationListener {
 				}
 			}
 
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 
 		return location;
 	}
 
-	public double getLatitude(){
-		if(location != null){
+	public double getLatitude()
+	{
+		if (location != null)
+		{
 			latitude = location.getLatitude();
 		}
 
 		return latitude;
 	}
 
-	public double getLongitude(){
-		if(location != null){
+	public double getLongitude()
+	{
+		if (location != null)
+		{
 			longitude = location.getLongitude();
 		}
 
 		return longitude;
 	}
 
-	//UNGENUTZT!!
+	// UNGENUTZT!!
 	@Override
-	public void onLocationChanged(Location location) {
+	public void onLocationChanged(Location location)
+	{
 	}
 
 	@Override
-	public void onProviderDisabled(String provider) {
+	public void onProviderDisabled(String provider)
+	{
 	}
 
 	@Override
-	public void onProviderEnabled(String provider) {
+	public void onProviderEnabled(String provider)
+	{
 	}
 
 	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
+	public void onStatusChanged(String provider, int status, Bundle extras)
+	{
 	}
 
 	@Override
-	public IBinder onBind(Intent arg0) {
+	public IBinder onBind(Intent arg0)
+	{
 		return null;
 	}
 
-	public boolean getGpsIsOn() {
+	public boolean getGpsIsOn()
+	{
 		return gpsIsOn;
 	}
 
-	public boolean getNetworkIsOn() {
+	public boolean getNetworkIsOn()
+	{
 		return networkIsOn;
 	}
+
 }

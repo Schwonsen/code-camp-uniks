@@ -1,8 +1,8 @@
 package com.uni.cc_uniapp_2015.gps;
 
 import java.util.Locale;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
@@ -26,8 +26,9 @@ public class Navigation {
 
 	public void navigateTo(String address){
 		String uri = null;
-
-		//Wenn Position Ã¼ber GPS oder network abrufbar --> Ã¼bergebe Koordinaten
+		
+		
+		//Wenn Position über GPS oder network abrufbar --> übergebe Koordinaten
 		if(tracker.gpsIsOn | tracker.networkIsOn){
 			uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?saddr=%f,%f&daddr=%s", LATITUDE, LONGLATITUDE, address);
 			//Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
@@ -42,6 +43,9 @@ public class Navigation {
 
 			Toast.makeText(activity, "FEHLER: Schalten Sie Mobile Daten und GPS ein!",Toast.LENGTH_LONG).show();
 			activity.finish();
+
+
 		}
 	}
+
 }

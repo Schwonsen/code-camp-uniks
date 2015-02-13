@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="2dp"
     android:layout_margin="7dp"
-    android:background="@drawable/meallistitembackground">
+    android:background="@drawable/meallistitembackground"
+    android:orientation="horizontal"
+    android:padding="2dp" >
 
     <ImageView
         android:id="@+id/mealicon"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="2dp">
+        android:padding="2dp" >
 
         <TextView
             android:id="@+id/nameOfMeal"
@@ -27,45 +27,47 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:fontFamily="sans-serif-light"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
-
-    <TextView
-        android:id="@+id/descriptionOfMeal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif-light"/>
+        <TextView
+            android:id="@+id/descriptionOfMeal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif-light" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="2dp">
-    <TextView
-        android:id="@+id/studentPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif-light"/>
+            android:padding="2dp" >
 
-    <TextView
-        android:id="@+id/employeePrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif-light"/>
+            <TextView
+                android:id="@+id/studentPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="sans-serif-light" />
 
-    <TextView
-        android:id="@+id/otherPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif-light"/>
+            <TextView
+                android:id="@+id/employeePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="sans-serif-light" />
+
+            <TextView
+                android:id="@+id/otherPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="sans-serif-light" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
         </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

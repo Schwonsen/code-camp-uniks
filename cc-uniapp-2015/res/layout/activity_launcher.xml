@@ -1,155 +1,138 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uni.cc_uniapp_2015.activities.LauncherActivity"
-    android:scrollbars="none"
     android:focusable="false"
     android:focusableInTouchMode="false"
-    >
-    <RelativeLayout
-        android:id="@+id/parent"
+    android:scrollbars="none"
+    tools:context="app.campus.camp.code.campusapp.activities.LauncherActivity" >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
-        <HorizontalScrollView
-            android:id="@+id/backgroundscrollview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:fillViewport="true"
-            android:measureAllChildren="false"
-            android:scrollbars="none"
-            android:focusable="false"
-            android:focusableInTouchMode="false">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/background"
-                android:layout_width="600dp"
-                android:layout_height="match_parent"
-                android:background="#ffffff"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
-        </HorizontalScrollView>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_centerInParent="true">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:id="@+id/mensaButton"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        />
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="80dp"
-                        
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#222222"
-                        android:padding="20dp"
-                        android:background="@drawable/reversetabbgtransparent"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal"
-                        android:text="Speiseplan"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:id="@+id/nvvButton"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        />
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="80dp"
-                        
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#222222"
-                        android:padding="20dp"
-                        android:background="@drawable/reversetabbgtransparent"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal"
-                        android:text="Bus und Bahn"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:id="@+id/gpsButton"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"/>
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="80dp"
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#222222"
-                        android:padding="20dp"
-                        android:background="@drawable/reversetabbgtransparent"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal"
-                        android:text="Uni Finder"
-                        />
-                </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp">
-                    <ImageView
-                        android:id="@+id/bibButton"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"/>
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="80dp"
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#222222"
-                        android:padding="20dp"
-                        android:background="@drawable/reversetabbgtransparent"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal"
-                        android:text="Bibliothek"
-                        />
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/mensaButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/reversetabbgtransparent"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center_horizontal"
+                    android:onClick="openActivity"
+                    android:padding="20dp"
+                    android:text="Speiseplan"
+                    android:textColor="#222222" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/nvvButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/reversetabbgtransparent"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center_horizontal"
+                    android:onClick="openActivity"
+                    android:padding="20dp"
+                    android:text="Bus und Bahn"
+                    android:textColor="#222222" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/gpsButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/reversetabbgtransparent"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center_horizontal"
+                    android:onClick="openActivity"
+                    android:padding="20dp"
+                    android:text="Uni Finder"
+                    android:textColor="#222222" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/bibButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/reversetabbgtransparent"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center_horizontal"
+                    android:onClick="openActivity"
+                    android:padding="20dp"
+                    android:text="Bibliothek"
+                    android:textColor="#222222" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
 </ScrollView>

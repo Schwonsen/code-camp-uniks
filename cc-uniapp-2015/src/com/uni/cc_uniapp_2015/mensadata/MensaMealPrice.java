@@ -1,28 +1,37 @@
 package com.uni.cc_uniapp_2015.mensadata;
 
-public class MensaMealPrice {
+/**
+ * Created by Schrom on 09.02.2015.
+ */
+public class MensaMealPrice
+{
 
-    String value;
-    String type;
+	String value;
+	String type;
 
-    public MensaMealPrice(String value, String type) {
-        this.value = value;
-        this.type = type;
-    }
+	public MensaMealPrice(String value, String type)
+	{
+		this.value = value;
+		this.type = type;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public String getValue()
+	{
+		return value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value)
+	{
+		this.value = value;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public String getType()
+	{
+		return type;
+	}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+	public void setType(String type)
+	{
+		this.type = type;
+	}
 }

@@ -1,89 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:context="com.uni.cc_uniapp_2015.NvvActivity">
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="113dp"
-        android:orientation="vertical" >
-
-        <ListView
-            android:id="@+id/listViewNvv"
-            android:layout_width="match_parent"
-            android:layout_height="300dp" >
-        </ListView>
-    </LinearLayout>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mybackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.uni.cc_uniapp_2015.NvvActivity" >
 
     <ScrollView
-        android:id="@+id/linearLayout2"
+        android:id="@+id/mlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
+        android:layout_height="match_parent"
+        android:layout_marginTop="160dp"
         android:orientation="vertical" >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:weightSum="1" >
 
-            <TimePicker
-                android:id="@+id/timePickerNvv"
+            <ListView
+                android:id="@+id/listViewNvv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:timePickerMode="spinner">
+                android:layout_height="280dp" >
+            </ListView>
 
-                <RadioGroup
-                    android:id="@+id/radioNvv"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/daybackground_clickedtab"
+                android:orientation="horizontal" >
+
+                <TimePicker
+                    android:id="@+id/timePickerNvv"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="50dp" >
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#222"
+                    android:timePickerMode="spinner" >
 
-                    <RadioButton
-                        android:id="@+id/radioWilli"
+                    <RadioGroup
+                        android:id="@+id/radioNvv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Willi" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp" >
 
-                    <RadioButton
-                        android:id="@+id/radioHopla"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HoPla" />
+                        <RadioButton
+                            android:id="@+id/radioWilli"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text=" Willi"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/radioKorba"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="AVZ" />
-                </RadioGroup>
-                <ImageButton
-                    android:id="@+id/buttonSearchTram"
-                    android:src="@drawable/refreshicon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitCenter"
-                    android:background="@android:color/transparent"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="75dp"
-                    android:layout_gravity="right"/>
-            </TimePicker>
-        </RelativeLayout>
-        </ScrollView>
+                        <RadioButton
+                            android:id="@+id/radioHopla"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" HoPla"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:id="@+id/radioKorba"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" AVZ"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                    </RadioGroup>
+
+                    <Button
+                        android:id="@+id/buttonSearchTram"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="75dp"
+                        android:background="@android:drawable/ic_search_category_default"
+                        android:scaleType="fitCenter" />
+                </TimePicker>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/mTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
     <ImageView
-        android:id="@+id/nvvImageView"
+        android:id="@+id/mImageView"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="#fafa00"/>
+        android:background="#000000" />
+
 </RelativeLayout>
